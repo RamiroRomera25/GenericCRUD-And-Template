@@ -1,12 +1,10 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.repositories.specs;
 
-import ar.edu.utn.frc.tup.lciii.templateSpring.entities.base.BaseEntity;
 import jakarta.persistence.criteria.Predicate;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Map;
 

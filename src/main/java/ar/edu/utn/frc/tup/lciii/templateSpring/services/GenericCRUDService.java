@@ -2,13 +2,11 @@ package ar.edu.utn.frc.tup.lciii.templateSpring.services;
 
 import ar.edu.utn.frc.tup.lciii.templateSpring.entities.base.BaseEntity;
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.GenericRepository;
-import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.specs.GenericSpecification;
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.specs.SpecificationBuilder;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.server.ResponseStatusException;

@@ -1,9 +1,6 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.controllers;
 
 import ar.edu.utn.frc.tup.lciii.templateSpring.dtos.common.ErrorApi;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

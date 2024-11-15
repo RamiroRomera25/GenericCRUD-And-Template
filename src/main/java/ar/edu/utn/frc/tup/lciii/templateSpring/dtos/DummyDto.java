@@ -1,6 +1,7 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.dtos;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor

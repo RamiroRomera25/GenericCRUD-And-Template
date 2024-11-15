@@ -4,7 +4,7 @@ package ar.edu.utn.frc.tup.lciii.templateSpring.annotations;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
