@@ -1,30 +1,24 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.controllers;
 
-import ar.edu.utn.frc.tup.lciii.templateSpring.dtos.DummyDto;
+import ar.edu.utn.frc.tup.lciii.templateSpring.dtos.DummyDtoFilter;
 import ar.edu.utn.frc.tup.lciii.templateSpring.dtos.DummyDtoPost;
 import ar.edu.utn.frc.tup.lciii.templateSpring.dtos.DummyDtoPut;
 import ar.edu.utn.frc.tup.lciii.templateSpring.entities.DummyEntity;
 import ar.edu.utn.frc.tup.lciii.templateSpring.models.DummyModel;
-import ar.edu.utn.frc.tup.lciii.templateSpring.services.DummyService;
-import ar.edu.utn.frc.tup.lciii.templateSpring.services.GenericCRUDService;
-import ar.edu.utn.frc.tup.lciii.templateSpring.services.impl.DummyServiceImpl;
-import ar.edu.utn.frc.tup.lciii.templateSpring.services.impl.GenericCRUDServiceImpl;
+import ar.edu.utn.frc.tup.lciii.templateSpring.services.DummyService_V3;
+import ar.edu.utn.frc.tup.lciii.templateSpring.services.GenericCRUDService_V3;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/dummy")
-public class DummyController extends GenericController<DummyEntity, Long, DummyModel, DummyDtoPost, DummyDtoPut> {
-
+@RequestMapping("/v3/dummy/")
+public class DummyController extends GenericController<DummyEntity, Long, DummyModel, DummyDtoPost, DummyDtoPut, DummyDtoFilter> {
     @Autowired
-    private DummyServiceImpl dummyService;
+    private DummyService_V3 dummyService_V3;
 
     @Override
-    public GenericCRUDService<DummyEntity, Long, DummyModel, DummyDtoPost, DummyDtoPut> getService() {
-        return dummyService;
+    public GenericCRUDService_V3<DummyEntity, Long, DummyModel, DummyDtoPost, DummyDtoPut, DummyDtoFilter> getService() {
+        return dummyService_V3;
     }
 }
