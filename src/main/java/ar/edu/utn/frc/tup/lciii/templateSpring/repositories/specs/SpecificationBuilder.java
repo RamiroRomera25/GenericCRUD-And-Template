@@ -15,36 +15,62 @@ public class SpecificationBuilder<E> {
     private Specification<E> specs;
 
     public SpecificationBuilder<E> withDynamicFilter(Map<String, Object> attributes) {
-        specs.and(specification.dynamicFilter(attributes));
+        if (specs == null) {
+            specs = specification.dynamicFilter(attributes);
+        } else {
+            specs.and(specification.dynamicFilter(attributes));
+        }
         return this;
     }
 
     public SpecificationBuilder<E> withValueDynamicFilter(String value, String... entityFields) {
-        specs.and(specification.valueDynamicFilter(value, entityFields));
+        if (specs == null) {
+            specs = specification.valueDynamicFilter(value, entityFields);
+        } else {
+            specs.and(specification.valueDynamicFilter(value, entityFields));
+        }
         return this;
     }
 
     public <T extends Comparable<? super T>> SpecificationBuilder<E> withFilterBetween(T lower, T higher, String field) {
-        specs.and(specification.filterBetween(lower, higher, field));
+        if (specs == null) {
+            specs = specification.filterBetween(lower, higher, field);
+        } else {
+            specs.and(specification.filterBetween(lower, higher, field));
+        }
         return this;
     }
 
     public <T extends Comparable<? super T>> SpecificationBuilder<E> withFilterLowerThan(T value, String field) {
-        specs.and(specification.filterLowerThan(value, field));
+        if (specs == null) {
+            specs = specification.filterLowerThan(value, field);
+        } else {
+            specs.and(specification.filterLowerThan(value, field));
+        }
         return this;
     }
 
     public <T extends Comparable<? super T>> SpecificationBuilder<E> withFilterGreaterThan(T value, String field) {
-        specs.and(specification.filterGreaterThan(value, field));
+        if (specs == null) {
+            specs = specification.filterGreaterThan(value, field);
+        } else {
+            specs.and(specification.filterGreaterThan(value, field));
+        }
         return this;
     }
 
     public SpecificationBuilder<E> withDynamicFilterLike(Map<String, Object> attributes) {
-        specs.and(specification.dynamicFilterLike(attributes));
+        if (specs == null) {
+            specs = specification.dynamicFilterLike(attributes);
+        } else {
+            specs.and(specification.dynamicFilterLike(attributes));
+        }
         return this;
     }
 
     public Specification<E> build() {
-        return specs;
+        Specification<E> specsForReturn = this.specs;
+        specs = null;
+        return specsForReturn;
     }
 }
