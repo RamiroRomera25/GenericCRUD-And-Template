@@ -1,6 +1,5 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.services.genericSegregation;
 
-import ar.edu.utn.frc.tup.lciii.templateSpring.entities.base.BaseEntity;
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.GenericRepository;
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.specs.SpecificationBuilder;
 import org.modelmapper.ModelMapper;

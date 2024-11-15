@@ -1,6 +1,5 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.services.genericSegregation;
 
-import ar.edu.utn.frc.tup.lciii.templateSpring.entities.base.BaseEntity;
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.GenericRepository;
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.specs.SpecificationBuilder;
 import org.modelmapper.ModelMapper;
@@ -9,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface GenericGetAllList<E, I, M, DTOFILTER> extends GenericMapper<DTOFILTER> {
     ModelMapper getMapper();
