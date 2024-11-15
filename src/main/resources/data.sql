@@ -1,0 +1,1 @@
+SELECT 'Borrar el data.sql si no es necesario'
