@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ar.edu.utn.frc.tup.lciii</groupId>
-	<artifactId>GenericCRUD</artifactId>
-	<version>v4</version>
-	<name>GenericCRUD</name>
-	<description>Generic CRUD for Spring using JPA</description>
+	<artifactId>templateSpring</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>templateSpring</name>
+	<description>Template for Spring Project</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

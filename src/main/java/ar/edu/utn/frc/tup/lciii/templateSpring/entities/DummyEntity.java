@@ -1,15 +1,18 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.entities;
 
+import ar.edu.utn.frc.tup.lciii.templateSpring.entities.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @Table(name = "dummy")
-public class DummyEntity {
+public class DummyEntity extends BaseEntity {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +20,4 @@ public class DummyEntity {
 
     @Column
     private String dummy;
-
-    private Boolean active = true;
 }

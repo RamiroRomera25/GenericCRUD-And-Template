@@ -1,10 +1,11 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.dtos;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class DummyDto {
+public class DummyDtoFilter {
     private Long id;
     private String dummy;
     private Boolean isActive;
