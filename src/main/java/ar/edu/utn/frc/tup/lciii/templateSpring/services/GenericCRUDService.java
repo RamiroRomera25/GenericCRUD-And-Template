@@ -8,7 +8,6 @@ import org.modelmapper.TypeToken;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public interface GenericCRUDService_V3<E extends BaseEntity, I, M, DTOPOST, DTOPUT, DTOFILTER> {
+public interface GenericCRUDService<E extends BaseEntity, I, M, DTOPOST, DTOPUT, DTOFILTER> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

@@ -8,5 +8,5 @@ import ar.edu.utn.frc.tup.lciii.templateSpring.models.DummyModel;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface DummyService_V3 extends GenericCRUDService_V3<DummyEntity, Long, DummyModel, DummyDtoPost, DummyDtoPut, DummyDtoFilter> {
+public interface DummyService extends GenericCRUDService<DummyEntity, Long, DummyModel, DummyDtoPost, DummyDtoPut, DummyDtoFilter> {
 }

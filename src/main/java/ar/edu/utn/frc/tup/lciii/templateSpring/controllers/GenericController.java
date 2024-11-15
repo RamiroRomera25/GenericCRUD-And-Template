@@ -1,7 +1,7 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.controllers;
 
 import ar.edu.utn.frc.tup.lciii.templateSpring.entities.base.BaseEntity;
-import ar.edu.utn.frc.tup.lciii.templateSpring.services.GenericCRUDService_V3;
+import ar.edu.utn.frc.tup.lciii.templateSpring.services.GenericCRUDService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import java.lang.reflect.Field;
 
 public abstract class GenericController<E extends BaseEntity, I, M, DTOPOST, DTOPUT, DTOFILTER> {
 
-    public abstract GenericCRUDService_V3 getService();
+    public abstract GenericCRUDService getService();
 
     @GetMapping("")
     public ResponseEntity<?> getAll(@RequestParam(required = false) Integer page,

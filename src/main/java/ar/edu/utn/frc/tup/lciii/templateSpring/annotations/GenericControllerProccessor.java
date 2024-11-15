@@ -1,16 +1,10 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.annotations;
 
 
-import ar.edu.utn.frc.tup.lciii.templateSpring.services.GenericCRUDService_V3;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
-
-import jakarta.validation.Valid;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
