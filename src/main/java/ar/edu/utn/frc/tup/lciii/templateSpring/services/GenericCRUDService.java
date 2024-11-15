@@ -3,6 +3,7 @@ package ar.edu.utn.frc.tup.lciii.templateSpring.services;
 import ar.edu.utn.frc.tup.lciii.templateSpring.entities.base.BaseEntity;
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.GenericRepository;
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.specs.GenericSpecification;
+import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.specs.SpecificationBuilder;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.data.domain.Page;
@@ -22,11 +23,11 @@ public interface GenericCRUDService<E extends BaseEntity, I, M, DTOPOST, DTOPUT,
 
     GenericRepository<E, I> getRepository();
 
-    GenericSpecification<E> getSpecification();
-
     Class<E> entityClass();
 
     Class<M> modelClass();
+
+    SpecificationBuilder<E> specificationBuilder();
 
     default M getById(I id) {
         Optional<E> entityOptional = getRepository().findById(id);
@@ -47,8 +48,9 @@ public interface GenericCRUDService<E extends BaseEntity, I, M, DTOPOST, DTOPUT,
     }
 
     default List<M> getAll(DTOFILTER filter) {
-        Specification<E> spec = getFilterMap(filter);
-        List<E> entityList = getRepository().findAll(spec);
+        List<E> entityList = getRepository().findAll(specificationBuilder()
+                                .withDynamicFilter(this.getFilterMap(filter))
+                                .build());
         if (!entityList.isEmpty()) {
             return getMapper().map(entityList, new TypeToken<List<M>>() {}.getType());
         } else {
@@ -67,8 +69,10 @@ public interface GenericCRUDService<E extends BaseEntity, I, M, DTOPOST, DTOPUT,
     }
 
     default Page<M> getAll(Pageable pageable, DTOFILTER filter) {
-        Specification<E> spec = getFilterMap(filter);
-        Page<E> pageEntity = getRepository().findAll(spec, pageable);
+        Page<E> pageEntity = getRepository().findAll(specificationBuilder()
+                                                        .withDynamicFilter(this.getFilterMap(filter))
+                                                        .build(),
+                                                        pageable);
         if (!pageEntity.isEmpty()) {
             return getMapper().map(pageEntity, new TypeToken<Page<M>>() {
             }.getType());
@@ -101,7 +105,7 @@ public interface GenericCRUDService<E extends BaseEntity, I, M, DTOPOST, DTOPUT,
         return changeActiveStatus(id, true);
     }
 
-    private Specification<E> getFilterMap(DTOFILTER filter) {
+    default Map<String, Object> getFilterMap(DTOFILTER filter) {
         Map<String, Object> filterMap = new HashMap<>();
 
         ReflectionUtils.doWithFields(filter.getClass(), field -> {
@@ -112,7 +116,7 @@ public interface GenericCRUDService<E extends BaseEntity, I, M, DTOPOST, DTOPUT,
             }
         });
 
-        return getSpecification().dynamicFilter(filterMap);
+        return filterMap;
     }
 
     private M changeActiveStatus(I id, boolean isActive) {
