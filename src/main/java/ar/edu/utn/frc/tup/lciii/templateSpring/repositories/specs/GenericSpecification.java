@@ -16,7 +16,7 @@ import java.util.Map;
  */
 @NoArgsConstructor
 @Component
-public class GenericSpecification<E extends BaseEntity> {
+public class GenericSpecification<E> {
     
     /**
      * Filter by attributtes.
