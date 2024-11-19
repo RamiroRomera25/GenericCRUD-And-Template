@@ -22,4 +22,10 @@ public class DummyEntity extends BaseEntity {
 
     @Column
     private String dummy;
+
+    private Long email;
+
+    private Long composeID1;
+
+    private Long composeID2;
 }
