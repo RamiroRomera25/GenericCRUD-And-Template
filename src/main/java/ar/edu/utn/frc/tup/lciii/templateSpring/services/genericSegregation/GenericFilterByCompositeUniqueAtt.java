@@ -23,6 +23,12 @@ public interface GenericFilterByCompositeUniqueAtt<E, I, M> {
                 .orElseThrow(() -> new EntityNotFoundException(buildErrorMessage(uniqueFields)));
     }
 
+    default M getModelByCompositeUniqueFields(Map<String, Object> uniqueFields) {
+        return getRepository().findOne(specificationBuilder().compositeUniqueValues(uniqueFields).build())
+                .map((entity) -> getMapper().map(entity, modelClass()))
+                .orElseThrow(() -> new EntityNotFoundException(buildErrorMessage(uniqueFields)));
+    }
+
     private String buildErrorMessage(Map<String, Object> uniqueFields) {
         String fields = uniqueFields.entrySet().stream()
                 .map(entry -> entry.getKey() + " = " + entry.getValue())
