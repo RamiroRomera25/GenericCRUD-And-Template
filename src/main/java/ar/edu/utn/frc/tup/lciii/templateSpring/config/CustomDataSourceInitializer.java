@@ -19,7 +19,7 @@ public class CustomDataSourceInitializer {
     /**
      * Path to data-mysql.sql.
      */
-    @Value("classpath:data-h2.sql")
+    @Value("classpath:data.sql")
     private Resource dataScript;
 
     /**
