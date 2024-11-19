@@ -3,7 +3,7 @@
   MEJORANDO EL MUNDO UN PUNTO Y COMA A LA VEZ
 </h1>
 
-<h3 aling="center">Este repo muestra un ejemplo aplicado del Controller y Service Genericos realizados con todas las funcionalidades de CRUD.</h3>
+<h3 aling="center">Este repo muestra un ejemplo aplicado del Controller y Service Genericos realizados con todas las funcionalidades CRUD.</h3>
 
 <p align="center">
 
@@ -11,9 +11,9 @@
 
     - Incluye paginacion para el getAll dinamicamente y filtrado de campos dinamicos.
     
-    - Incluye un controller generico de CRUD.
+    - Incluye un controller generico CRUD.
     
-    - Incluye segregacion de interfaces generica del CRUD.
+    - Incluye segregacion de interfaces generica CRUD.
     
     - Incluye metodos de obtencion de entidades mediante clave unica o compuesta.
     
