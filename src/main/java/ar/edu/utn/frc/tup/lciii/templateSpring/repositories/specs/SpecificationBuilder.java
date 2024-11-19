@@ -68,6 +68,28 @@ public class SpecificationBuilder<E> {
         return this;
     }
 
+    public SpecificationBuilder<E> uniqueValue(String field, Object value) {
+        if (specs == null) {
+            specs = specification.uniqueValue(field, value);
+        } else {
+            specs.and(specification.uniqueValue(field, value));
+        }
+        return this;
+    }
+
+    public SpecificationBuilder<E> compositeUniqueValues(Map<String, Object> uniqueFields) {
+        if (uniqueFields.isEmpty()) {
+            throw new IllegalArgumentException("Unique fields cannot be empty.");
+        }
+
+        if (specs == null) {
+            specs = specification.compositeUniqueValues(uniqueFields);
+        } else {
+            specs.and(specification.compositeUniqueValues(uniqueFields));
+        }
+        return this;
+    }
+
     public Specification<E> build() {
         Specification<E> specsForReturn = this.specs;
         specs = null;

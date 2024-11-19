@@ -1,6 +1,9 @@
 package ar.edu.utn.frc.tup.lciii.templateSpring.repositories.specs;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
@@ -123,4 +126,28 @@ public class GenericSpecification<E> {
         };
     }
 
+    public Specification<E> uniqueValue(String fieldName, Object value) {
+        return (root, query, criteriaBuilder) -> {
+            if (value == null) {
+                return null;
+            }
+            return criteriaBuilder.equal(root.get(fieldName), value);
+        };
+    }
+
+    public Specification<E> compositeUniqueValues(Map<String, Object> uniqueFields) {
+        return (root, query, criteriaBuilder) -> {
+            Predicate[] predicates = new Predicate[uniqueFields.size()];
+            int i = 0;
+
+            for (Map.Entry<String, Object> entry : uniqueFields.entrySet()) {
+                String fieldName = entry.getKey();
+                Object value = entry.getValue();
+
+                predicates[i++] = criteriaBuilder.equal(root.get(fieldName), value);
+            }
+
+            return criteriaBuilder.and(predicates);
+        };
+    }
 }
