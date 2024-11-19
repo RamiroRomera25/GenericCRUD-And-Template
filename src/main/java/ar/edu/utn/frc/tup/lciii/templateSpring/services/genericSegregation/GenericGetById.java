@@ -12,7 +12,13 @@ public interface GenericGetById<E, I, M> {
 
     Class<M> modelClass();
 
-    default M getById(I id) {
+    default E getById(I id) {
+        return getRepository().findById(id)
+            .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Not found any object with id: " + id));
+    }
+
+    default M getModelById(I id) {
         return getRepository().findById(id)
             .map(entity -> getMapper().map(entity, modelClass()))
             .orElseThrow(() -> new ResponseStatusException(
