@@ -1,4 +1,4 @@
-package ar.edu.utn.frc.tup.lciii.templateSpring.services.genericSegregation;
+package ar.edu.utn.frc.tup.lciii.templateSpring.services.genericSegregation.uniqueAtt;
 
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.GenericRepository;
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.specs.SpecificationBuilder;

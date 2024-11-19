@@ -1,7 +1,8 @@
-package ar.edu.utn.frc.tup.lciii.templateSpring.services.genericSegregation;
+package ar.edu.utn.frc.tup.lciii.templateSpring.services.genericSegregation.basicCRUD;
 
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.GenericRepository;
 import ar.edu.utn.frc.tup.lciii.templateSpring.repositories.specs.SpecificationBuilder;
+import ar.edu.utn.frc.tup.lciii.templateSpring.services.genericSegregation.GenericMapper;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.http.HttpStatus;
