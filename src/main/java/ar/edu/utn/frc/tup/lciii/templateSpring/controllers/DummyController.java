@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v4/dummy")
+@RequestMapping("/v5/dummy")
 public class DummyController extends GenericController<DummyEntity, Long, DummyModel, DummyDtoPost, DummyDtoPut, DummyDtoFilter> {
     @Autowired
     private DummyService dummyService;
