@@ -20,7 +20,7 @@ services:
     container_name: generic
     build:
       context: .
-      dockerfile: Dockerfile-Alpine
+      dockerfile: Dockerfile-Distroless
     environment:
       SPRING_PROFILES_ACTIVE: postgres
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/generic
