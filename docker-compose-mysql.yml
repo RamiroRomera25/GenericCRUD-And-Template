@@ -1,0 +1,37 @@
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: generic
+      MYSQL_USER: rami
+      MYSQL_PASSWORD: rami
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 25
+
+  app:
+    container_name: generic
+    build:
+      context: .
+      dockerfile: Dockerfile-Distroless
+    environment:
+      SPRING_PROFILES_ACTIVE: mysql
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/generic
+      SPRING_DATASOURCE_USERNAME: rami
+      SPRING_DATASOURCE_PASSWORD: rami
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mysql_data:

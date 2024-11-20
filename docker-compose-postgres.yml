@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: generic
+      POSTGRES_USER: rami
+      POSTGRES_PASSWORD: rami
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "myuser"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    container_name: generic
+    build:
+      context: .
+      dockerfile: Dockerfile-Alpine
+    environment:
+      SPRING_PROFILES_ACTIVE: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/generic
+      SPRING_DATASOURCE_USERNAME: rami
+      SPRING_DATASOURCE_PASSWORD: rami
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
