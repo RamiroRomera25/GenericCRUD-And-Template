@@ -1,5 +1,6 @@
 package rami.generic.controllers;
 
+import jdk.jfr.Experimental;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,12 +20,16 @@ import rami.generic.dtos.DummyDtoPut;
 import rami.generic.entities.DummyEntity;
 import rami.generic.models.DummyModel;
 import rami.generic.services.DummyService;
+import rami.generic.services.genericSegregation.GenericService;
 import rami.generic.services.genericSegregation.basicCRUD.GenericSoftDelete;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/v5/dummy")
+
+@Experimental
+
 public class DummyController
 implements ControllerGetById<DummyEntity, Long, DummyModel>,
            ControllerGetAllList<DummyEntity, Long, DummyModel>,
@@ -33,11 +38,11 @@ implements ControllerGetById<DummyEntity, Long, DummyModel>,
            ControllerGetAllListFilter<DummyEntity, Long, DummyModel, DummyDtoFilter>,
            ControllerSoftDelete<DummyEntity, Long, DummyModel>,
            ControllerUpdate<DummyEntity, Long, DummyModel, DummyDtoPut>,
-           ControllerCreate<DummyEntity, Long, DummyModel, DummyDtoPost> {
+           ControllerCreate<DummyEntity, Long, DummyModel, DummyDtoPost>
+{
 
     @Autowired
     private DummyService dummyService;
-
 
     @GetMapping("/like")
     public ResponseEntity<List<DummyModel>> getDummiesLike(DummyDtoFilter filter) {
@@ -45,7 +50,7 @@ implements ControllerGetById<DummyEntity, Long, DummyModel>,
     }
 
     @Override
-    public GenericSoftDelete getService() {
-        return dummyService;
+    public GenericSoftDelete<DummyEntity, Long, DummyModel> getService() {
+        return null;
     }
 }

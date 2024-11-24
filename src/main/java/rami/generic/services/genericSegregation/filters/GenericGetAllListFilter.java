@@ -7,10 +7,11 @@ import org.springframework.web.server.ResponseStatusException;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.specs.SpecificationBuilder;
 import rami.generic.services.genericSegregation.GenericMapper;
+import rami.generic.services.genericSegregation.GenericService;
 
 import java.util.List;
 
-public interface GenericGetAllListFilter<E, I, M, DTOFILTER> extends GenericMapper {
+public interface GenericGetAllListFilter<E, I, M, DTOFILTER> extends GenericMapper, GenericService {
 
     ModelMapper getMapper();
 

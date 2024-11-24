@@ -9,7 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.services.genericSegregation.GenericMapper;
 
-public interface GenericGetAllPage<E, I, M> extends GenericMapper {
+public interface GenericGetAllPage<E, I, M> {
 
     ModelMapper getMapper();
 

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import rami.generic.services.genericSegregation.basicCRUD.GenericGetById;
 
-public interface ControllerGetById<E, I, M> {
+public interface ControllerGetById<E, I, M, SERVICE extends GenericGetById<E, I, M>> {
 
     GenericGetById<E, I, M> getService();
 
