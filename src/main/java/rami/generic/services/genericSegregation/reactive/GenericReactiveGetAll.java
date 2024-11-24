@@ -1,16 +1,9 @@
 package rami.generic.services.genericSegregation.reactive;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
-import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.GenericRepositoryReactive;
 import rami.generic.repositories.specs.SpecificationBuilder;
 import rami.generic.services.genericSegregation.GenericMapper;
-import reactor.core.publisher.Flux;
-
-import java.util.List;
 
 public interface GenericReactiveGetAll<E, I, M, DTOFILTER> extends GenericMapper {
     ModelMapper getMapper();
