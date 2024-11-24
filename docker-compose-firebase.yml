@@ -1,0 +1,10 @@
+services:
+  app:
+    container_name: generic
+    build:
+      context: .
+      dockerfile: Dockerfile-Distroless
+    environment:
+      SPRING_PROFILES_ACTIVE: firebase
+    ports:
+      - "8080:8080"
