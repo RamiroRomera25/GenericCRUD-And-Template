@@ -1,4 +1,4 @@
-package rami.generic.controllers.genericSegregation;
+package rami.generic.controllers.genericSegregation.basicCRUD;
 
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package rami.generic.controllers.genericSegregation;
+package rami.generic.controllers.genericSegregation.basicCRUD;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

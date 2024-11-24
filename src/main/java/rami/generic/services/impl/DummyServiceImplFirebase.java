@@ -22,8 +22,8 @@ import rami.generic.services.DummyService;
 import java.util.List;
 
 @Service
-@Profile({"dev", "mysql", "postgre"})
-public class DummyServiceImpl implements DummyService {
+@Profile("firebase")
+public class DummyServiceImplFirebase implements DummyService {
 
     //#region Autowired
     @Autowired
@@ -69,12 +69,30 @@ public class DummyServiceImpl implements DummyService {
     @Override
     public List<DummyModel> dummyLike(DummyDtoFilter filter) {
         List<DummyEntity> entityList = getRepository().findAll(specificationBuilder
-                                                    .withDynamicFilterLike(this.getFilterMap(filter))
-                                                    .build());
+                .withDynamicFilterLike(this.getFilterMap(filter))
+                .build());
         if (!entityList.isEmpty()) {
             return getMapper().map(entityList, new TypeToken<List<DummyModel>>() {}.getType());
         } else {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No content retrieved.");
         }
+    }
+
+    @Override
+    public DummyModel create(DummyDtoPost dtoPost) {
+
+        DummyEntity entityToSave = getMapper().map(dtoPost, entityClass());
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        String uniqueId = databaseReference.push().getKey();
+
+        databaseReference.child(getCollectionName()).child(uniqueId).setValueAsync(entityToSave);
+
+        return getMapper().map(entityToSave, modelClass());
+    }
+
+    private String getCollectionName() {
+        return "dummy";
     }
 }
