@@ -17,6 +17,7 @@ import rami.generic.services.GenericCRUDService;
 
 import java.lang.reflect.Field;
 
+@Deprecated
 public abstract class GenericController<E extends BaseEntity, I, M, DTOPOST, DTOPUT, DTOFILTER> {
 
     public abstract GenericCRUDService getService();
