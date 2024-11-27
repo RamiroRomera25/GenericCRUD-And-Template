@@ -1,4 +1,4 @@
-package rami.generic.services.genericSegregation.basicCRUD.lists;
+package rami.generic.services.genericSegregation.basicCRUD;
 
 import org.modelmapper.ModelMapper;
 import rami.generic.entities.base.BaseEntity;
