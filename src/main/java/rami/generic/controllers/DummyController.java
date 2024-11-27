@@ -20,8 +20,6 @@ import rami.generic.dtos.DummyDtoPut;
 import rami.generic.entities.DummyEntity;
 import rami.generic.models.DummyModel;
 import rami.generic.services.DummyService;
-import rami.generic.services.genericSegregation.GenericService;
-import rami.generic.services.genericSegregation.basicCRUD.GenericSoftDelete;
 
 import java.util.List;
 

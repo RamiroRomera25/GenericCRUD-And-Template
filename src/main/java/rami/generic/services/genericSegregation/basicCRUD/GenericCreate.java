@@ -2,9 +2,8 @@ package rami.generic.services.genericSegregation.basicCRUD;
 
 import org.modelmapper.ModelMapper;
 import rami.generic.repositories.GenericRepository;
-import rami.generic.services.genericSegregation.GenericService;
 
-public interface GenericCreate<E, I, M, DTOPOST> extends GenericService {
+public interface GenericCreate<E, I, M, DTOPOST> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

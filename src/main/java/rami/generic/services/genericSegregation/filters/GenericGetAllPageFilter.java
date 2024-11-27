@@ -9,9 +9,8 @@ import org.springframework.web.server.ResponseStatusException;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.specs.SpecificationBuilder;
 import rami.generic.services.genericSegregation.GenericMapper;
-import rami.generic.services.genericSegregation.GenericService;
 
-public interface GenericGetAllPageFilter<E, I, M, DTOFILTER> extends GenericMapper, GenericService {
+public interface GenericGetAllPageFilter<E, I, M, DTOFILTER> extends GenericMapper {
 
     ModelMapper getMapper();
 

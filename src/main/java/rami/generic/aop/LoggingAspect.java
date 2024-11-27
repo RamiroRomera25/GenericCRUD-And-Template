@@ -62,7 +62,7 @@ public class LoggingAspect {
      */
     @AfterThrowing(
             pointcut = "execution(* rami.generic..*(..)) "
-                    + "&& !execution(* rami.generic..services.imp.*.*(..))"
+                    + "&& !execution(* rami.generic..services.impl.*.*(..))"
                     + "&& !execution(* rami.generic..controllers.*.*(..))",
             throwing = "exception"
     )

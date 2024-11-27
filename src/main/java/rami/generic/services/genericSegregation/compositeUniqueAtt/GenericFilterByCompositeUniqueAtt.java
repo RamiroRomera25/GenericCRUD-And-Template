@@ -4,7 +4,6 @@ import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.specs.SpecificationBuilder;
-import rami.generic.services.genericSegregation.GenericService;
 
 import java.util.Map;
 
