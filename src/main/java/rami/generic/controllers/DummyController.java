@@ -1,6 +1,5 @@
 package rami.generic.controllers;
 
-import jdk.jfr.Experimental;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +26,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v5/dummy")
-
-@Experimental
-
 public class DummyController
 implements ControllerGetById<DummyEntity, Long, DummyModel, DummyService>,
            ControllerGetAllList<DummyEntity, Long, DummyModel, DummyService>,
