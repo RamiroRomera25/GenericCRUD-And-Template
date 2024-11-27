@@ -39,7 +39,7 @@ public class GenericControllerProccessor implements BeanPostProcessor {
             }
         }
 
-        // Similar para otros métodos CRUD
+        // Similar para otros CRUD
     }
 
     private boolean hasMethodWithAnnotation(Class<?> beanClass, Class<?> annotationClass, String path) {

@@ -10,7 +10,7 @@ public @interface GenericController {
     @AliasFor(annotation = Component.class)
     String value() default "";
 
-    // Configuraciones adicionales si son necesarias
+    // Configuraciones adicionales
     boolean enablePagination() default true;
     boolean enableReactivation() default true;
 }
