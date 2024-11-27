@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import rami.generic.services.genericSegregation.basicCRUD.GenericCreate;
 
-public interface ControllerCreate<E, I, M, DTOPOST> {
+public interface ControllerCreate<E, I, M, DTOPOST, SERVICE extends GenericCreate<E, I, M, DTOPOST>> {
 
-    GenericCreate<E, I, M, DTOPOST> getService();
+    SERVICE getService();
 
     @PostMapping("")
     default ResponseEntity<M> create(@RequestBody @Valid DTOPOST dtoPost) {

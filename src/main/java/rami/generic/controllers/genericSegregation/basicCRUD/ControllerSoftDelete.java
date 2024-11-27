@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import rami.generic.entities.base.BaseEntity;
 import rami.generic.services.genericSegregation.basicCRUD.GenericSoftDelete;
 
-public interface ControllerSoftDelete<E extends BaseEntity, I, M> {
+public interface ControllerSoftDelete<E extends BaseEntity, I, M, SERVICE extends GenericSoftDelete<E, I, M>> {
 
-    GenericSoftDelete<E, I, M> getService();
+    SERVICE getService();
 
     @DeleteMapping("/{id}")
     default ResponseEntity<M> delete(@PathVariable I id) {

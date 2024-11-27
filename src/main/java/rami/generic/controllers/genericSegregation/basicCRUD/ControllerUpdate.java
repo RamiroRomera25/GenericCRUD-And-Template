@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import rami.generic.services.genericSegregation.basicCRUD.GenericUpdate;
 
-public interface ControllerUpdate<E, I, M, DTOPUT> {
+public interface ControllerUpdate<E, I, M, DTOPUT, SERVICE extends GenericUpdate<E, I, M, DTOPUT>> {
 
-    GenericUpdate<E, I, M, DTOPUT> getService();
+    SERVICE getService();
 
     @PutMapping("/{id}")
     default ResponseEntity<M> update(@PathVariable I id,

@@ -12,11 +12,11 @@ import rami.generic.services.genericSegregation.filters.GenericGetAllPageFilter;
 
 import java.util.List;
 
-public interface ControllerGetAllPageFilter<E, I, M, DTOFILTER> {
+public interface ControllerGetAllPageFilter<E, I, M, DTOFILTER, SERVICE extends GenericGetAllPageFilter<E, I, M, DTOFILTER>> {
 
-    GenericGetAllPageFilter<E, I, M, DTOFILTER> getService();
+    SERVICE getService();
 
-    @GetMapping("/filters")
+    @GetMapping("/page/filters")
     default ResponseEntity<Page<M>> getAllFilter(@RequestBody DTOFILTER filters,
                                                  @RequestParam(required = false) int page,
                                                  @RequestParam(required = false) int size) {

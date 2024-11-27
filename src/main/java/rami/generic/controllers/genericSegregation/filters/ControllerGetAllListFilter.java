@@ -8,9 +8,9 @@ import rami.generic.services.genericSegregation.filters.GenericGetAllListFilter;
 
 import java.util.List;
 
-public interface ControllerGetAllListFilter<E, I, M, DTOFILTER> {
+public interface ControllerGetAllListFilter<E, I, M, DTOFILTER, SERVICE extends GenericGetAllListFilter<E, I, M, DTOFILTER>> {
 
-    GenericGetAllListFilter<E, I, M, DTOFILTER> getService();
+    SERVICE getService();
 
     @GetMapping("/filters")
     default ResponseEntity<List<M>> getAllFilter(@RequestBody DTOFILTER filters) {

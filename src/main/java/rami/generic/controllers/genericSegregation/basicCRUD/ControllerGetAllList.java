@@ -9,9 +9,9 @@ import rami.generic.services.genericSegregation.basicCRUD.GenericGetById;
 
 import java.util.List;
 
-public interface ControllerGetAllList<E, I, M> {
+public interface ControllerGetAllList<E, I, M, SERVICE extends GenericGetAllList<E, I, M>> {
 
-    GenericGetAllList<E, I, M> getService();
+    SERVICE getService();
 
     @GetMapping("")
     default ResponseEntity<List<M>> getAll() {

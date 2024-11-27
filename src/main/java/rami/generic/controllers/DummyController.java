@@ -31,14 +31,14 @@ import java.util.List;
 @Experimental
 
 public class DummyController
-implements ControllerGetById<DummyEntity, Long, DummyModel>,
-           ControllerGetAllList<DummyEntity, Long, DummyModel>,
-           ControllerGetAllPage<DummyEntity, Long, DummyModel>,
-           ControllerGetAllPageFilter<DummyEntity, Long, DummyModel, DummyDtoFilter>,
-           ControllerGetAllListFilter<DummyEntity, Long, DummyModel, DummyDtoFilter>,
-           ControllerSoftDelete<DummyEntity, Long, DummyModel>,
-           ControllerUpdate<DummyEntity, Long, DummyModel, DummyDtoPut>,
-           ControllerCreate<DummyEntity, Long, DummyModel, DummyDtoPost>
+implements ControllerGetById<DummyEntity, Long, DummyModel, DummyService>,
+           ControllerGetAllList<DummyEntity, Long, DummyModel, DummyService>,
+           ControllerGetAllPage<DummyEntity, Long, DummyModel, DummyService>,
+           ControllerGetAllPageFilter<DummyEntity, Long, DummyModel, DummyDtoFilter, DummyService>,
+           ControllerGetAllListFilter<DummyEntity, Long, DummyModel, DummyDtoFilter, DummyService>,
+           ControllerSoftDelete<DummyEntity, Long, DummyModel, DummyService>,
+           ControllerUpdate<DummyEntity, Long, DummyModel, DummyDtoPut, DummyService>,
+           ControllerCreate<DummyEntity, Long, DummyModel, DummyDtoPost, DummyService>
 {
 
     @Autowired
@@ -50,7 +50,7 @@ implements ControllerGetById<DummyEntity, Long, DummyModel>,
     }
 
     @Override
-    public GenericSoftDelete<DummyEntity, Long, DummyModel> getService() {
-        return null;
+    public DummyService getService() {
+        return dummyService;
     }
 }
