@@ -7,10 +7,12 @@ import rami.generic.dtos.DummyDtoPut;
 import rami.generic.entities.DummyEntity;
 import rami.generic.models.DummyModel;
 import rami.generic.services.genericSegregation.basicCRUD.GenericCreate;
+import rami.generic.services.genericSegregation.basicCRUD.GenericCreateList;
 import rami.generic.services.genericSegregation.basicCRUD.GenericGetAllList;
 import rami.generic.services.genericSegregation.basicCRUD.GenericGetAllPage;
 import rami.generic.services.genericSegregation.basicCRUD.GenericGetById;
 import rami.generic.services.genericSegregation.basicCRUD.GenericSoftDelete;
+import rami.generic.services.genericSegregation.basicCRUD.GenericSoftDeleteList;
 import rami.generic.services.genericSegregation.basicCRUD.GenericUpdate;
 import rami.generic.services.genericSegregation.filters.GenericGetAllListFilter;
 import rami.generic.services.genericSegregation.filters.GenericGetAllPageFilter;
@@ -26,7 +28,9 @@ extends GenericGetAllPage<DummyEntity, Long, DummyModel>,
         GenericUpdate<DummyEntity, Long, DummyModel, DummyDtoPut>,
         GenericSoftDelete<DummyEntity, Long, DummyModel>,
         GenericGetAllListFilter<DummyEntity, Long, DummyModel, DummyDtoFilter>,
-        GenericGetAllPageFilter<DummyEntity, Long, DummyModel, DummyDtoFilter>
+        GenericGetAllPageFilter<DummyEntity, Long, DummyModel, DummyDtoFilter>,
+        GenericCreateList<DummyEntity, Long, DummyModel, DummyDtoPost>,
+        GenericSoftDeleteList<DummyEntity, Long, DummyModel>
         {
     List<DummyModel> dummyLike(DummyDtoFilter filter);
 }

@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerCreate;
+import rami.generic.controllers.genericSegregation.basicCRUD.ControllerCreateList;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerGetAllList;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerGetAllPage;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerGetById;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerSoftDelete;
+import rami.generic.controllers.genericSegregation.basicCRUD.ControllerSoftDeleteList;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerUpdate;
 import rami.generic.controllers.genericSegregation.filters.ControllerGetAllListFilter;
 import rami.generic.controllers.genericSegregation.filters.ControllerGetAllPageFilter;
@@ -36,7 +38,9 @@ implements ControllerGetById<DummyEntity, Long, DummyModel, DummyService>,
            ControllerGetAllListFilter<DummyEntity, Long, DummyModel, DummyDtoFilter, DummyService>,
            ControllerSoftDelete<DummyEntity, Long, DummyModel, DummyService>,
            ControllerUpdate<DummyEntity, Long, DummyModel, DummyDtoPut, DummyService>,
-           ControllerCreate<DummyEntity, Long, DummyModel, DummyDtoPost, DummyService>
+           ControllerCreate<DummyEntity, Long, DummyModel, DummyDtoPost, DummyService>,
+           ControllerCreateList<DummyEntity, Long, DummyModel, DummyDtoPost, DummyService>,
+           ControllerSoftDeleteList<DummyEntity, Long, DummyModel, DummyService>
 {
 
     @Autowired
