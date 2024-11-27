@@ -1,4 +1,4 @@
-package rami.generic.services.genericSegregation.basicCRUD;
+package rami.generic.services.genericSegregation.basicCRUD.lists;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
