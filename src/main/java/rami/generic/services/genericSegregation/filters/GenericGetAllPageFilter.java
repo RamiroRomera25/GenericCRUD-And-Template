@@ -1,4 +1,4 @@
-package rami.generic.services.genericSegregation.basicCRUD;
+package rami.generic.services.genericSegregation.filters;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -7,16 +7,23 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import rami.generic.repositories.GenericRepository;
+import rami.generic.repositories.specs.SpecificationBuilder;
 import rami.generic.services.genericSegregation.GenericMapper;
+import rami.generic.services.genericSegregation.GenericService;
 
-public interface GenericGetAllPage<E, I, M> {
+public interface GenericGetAllPageFilter<E, I, M, DTOFILTER> extends GenericMapper, GenericService {
 
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();
 
-    default Page<M> getAll(Pageable pageable) {
-        Page<E> pageEntity = getRepository().findAll(pageable);
+    SpecificationBuilder<E> specificationBuilder();
+
+    default Page<M> getAll(Pageable pageable, DTOFILTER filter) {
+        Page<E> pageEntity = getRepository().findAll(specificationBuilder()
+                        .withDynamicFilter(this.getFilterMap(filter))
+                        .build(),
+                pageable);
         if (!pageEntity.isEmpty()) {
             return getMapper().map(pageEntity, new TypeToken<Page<M>>() {
             }.getType());
@@ -24,4 +31,5 @@ public interface GenericGetAllPage<E, I, M> {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No content retrieved.");
         }
     }
+
 }
