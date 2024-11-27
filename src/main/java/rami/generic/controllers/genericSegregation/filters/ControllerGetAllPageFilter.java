@@ -6,11 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import rami.generic.services.genericSegregation.basicCRUD.GenericGetAllPage;
-import rami.generic.services.genericSegregation.filters.GenericGetAllListFilter;
 import rami.generic.services.genericSegregation.filters.GenericGetAllPageFilter;
-
-import java.util.List;
 
 public interface ControllerGetAllPageFilter<E, I, M, DTOFILTER, SERVICE extends GenericGetAllPageFilter<E, I, M, DTOFILTER>> {
 

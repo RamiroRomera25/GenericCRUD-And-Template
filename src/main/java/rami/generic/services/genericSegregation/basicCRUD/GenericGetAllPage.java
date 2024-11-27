@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import rami.generic.repositories.GenericRepository;
-import rami.generic.services.genericSegregation.GenericMapper;
 
 public interface GenericGetAllPage<E, I, M> {
 

@@ -3,7 +3,6 @@ package rami.generic.controllers.genericSegregation.filters;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import rami.generic.services.genericSegregation.basicCRUD.GenericGetAllList;
 import rami.generic.services.genericSegregation.filters.GenericGetAllListFilter;
 
 import java.util.List;
