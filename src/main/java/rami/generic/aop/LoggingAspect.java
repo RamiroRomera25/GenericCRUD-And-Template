@@ -31,7 +31,7 @@ public class LoggingAspect {
      * @param exception the exception that was thrown
      */
     @AfterThrowing(
-            pointcut = "execution(* ar.edu.utn.frc.tup.lciii.templateSpring.services.impl.*.*(..))",
+            pointcut = "execution(* rami.generic.*.*(..))",
             throwing = "exception"
     )
     public void logAfterThrowingServices(Exception exception) {
@@ -46,7 +46,7 @@ public class LoggingAspect {
      * @param exception the exception that was thrown
      */
     @AfterThrowing(
-            pointcut = "execution(* ar.edu.utn.frc.tup.lciii.templateSpring.controllers.*.*(..))",
+            pointcut = "execution(* rami.generic..controllers.*.*(..))",
             throwing = "exception"
     )
     public void logAfterThrowingInControllers(Exception exception) {
@@ -61,9 +61,9 @@ public class LoggingAspect {
      * @param exception the exception that was thrown
      */
     @AfterThrowing(
-            pointcut = "execution(* ar.edu.utn.frc.tup.lciii.templateSpring..*(..)) "
-                    + "&& !execution(* ar.edu.utn.frc.tup.lciii.templateSpring..services.imp.*.*(..))"
-                    + "&& !execution(* ar.edu.utn.frc.tup.lciii.templateSpring..controllers.*.*(..))",
+            pointcut = "execution(* rami.generic..*(..)) "
+                    + "&& !execution(* rami.generic..services.imp.*.*(..))"
+                    + "&& !execution(* rami.generic..controllers.*.*(..))",
             throwing = "exception"
     )
     public void logAfterThrowing(Exception exception) {
