@@ -1,0 +1,40 @@
+<configuration>
+    <!-- Console Appender with Color -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %highlight(%-5level) [%thread] %logger{36} - %msg %X{className} %X{userId} %X{affectedEntityId} %X{affectedEntityClass}%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File Appender with JSON Encoder -->
+    <!-- <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/app-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender> -->
+
+    <!-- Instantaneous File Appender with JSON Encoder -->
+    <appender name="INSTANT_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/instant-app.log</file>
+        <append>true</append>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+
+    <!-- Asynchronous Appender -->
+    <!-- <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE"/>
+        <queueSize>5000</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <neverBlock>true</neverBlock>
+    </appender> -->
+
+    <!-- Root Logger -->
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <!-- <appender-ref ref="ASYNC"/> -->
+        <appender-ref ref="INSTANT_FILE"/>
+    </root>
+</configuration>

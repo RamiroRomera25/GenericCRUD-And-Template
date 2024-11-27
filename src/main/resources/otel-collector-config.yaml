@@ -1,0 +1,27 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+  filelog:
+    include: ["/app/logs/instant-app.log"]
+
+exporters:
+  jaeger:
+    endpoint: "http://jaeger:14250"
+  prometheus:
+    endpoint: "0.0.0.0:8888"
+  loki:
+    endpoint: "http://loki:3100/loki/api/v1/push"
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [jaeger]
+    metrics:
+      receivers: [otlp]
+      exporters: [prometheus]
+    logs:
+      receivers: [filelog]
+      exporters: [loki]
