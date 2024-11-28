@@ -1,0 +1,12 @@
+groups:
+  - name: example
+    rules:
+      - alert: HighCPUUsage
+#        expr: process_cpu_usage{job="accounts-app"} > 0.8
+        expr: sum(http_server_requests_seconds_count{job="accounts-app", uri!="/actuator/prometheus"}) > 15
+#        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High CPU usage detected"
+          description: "CPU usage is above 80% for more than 1 minute."

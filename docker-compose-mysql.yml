@@ -17,7 +17,7 @@ services:
       timeout: 5s
       retries: 25
 
-  app:
+  generic:
     container_name: generic
     build:
       context: .
@@ -32,6 +32,84 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+      grafana:
+        condition: service_started
+      alertmanager:
+        condition: service_started
+      otel-collector:
+        condition: service_started
+      jaeger:
+        condition: service_started
+
+  loki:
+    image: grafana/loki:main-8f243ee
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./src/main/resources/loki-config.yaml:/etc/loki/local-config.yml
+    #      - ./loki-config.yaml:/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/local-config.yaml
+
+    #  docker run -d --name=promtail -p 9080:9080 -v $(pwd)/promtail-config.yaml:/etc/promtail/config.yml grafana/promtail:2.4.1 -config.file=/etc/promtail/config.yml
+  promtail:
+    image: grafana/promtail:main-8f243ee
+    ports:
+      - "9080:9080"
+    volumes:
+      - ./src/main/resources/promtail-config.yaml:/etc/promtail/config.yml
+      - log_data:/logs
+    command: -config.file=/etc/promtail/config.yml
+
+  #  docker run -d --name=grafana -p 3000:3000 grafana/grafana:8.0.0
+  grafana:
+    image: grafana/grafana:10.4.12
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - loki
+      - prometheus
+
+  prometheus:
+    image: prom/prometheus:v3.0.0
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./src/main/resources/prometheus.yaml:/etc/prometheus/prometheus.yml
+      - ./src/main/resources/alertmanager/alert-rules.yaml:/etc/prometheus/alert-rules.yml
+  #    command:
+  #      - '--log.level=debug'
+
+  alertmanager:
+    image: prom/alertmanager:v0.27.0
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./src/main/resources/alertmanager/alert-manager.yaml:/etc/alertmanager/alertmanager.yml
+
+  otel-collector:
+    image: otel/opentelemetry-collector:0.114.0
+    volumes:
+      - ./src/main/resources/otel-collector-config.yaml:/etc/otel-collector-config.yml
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "8888:8888"
+      - "55681:55681"
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.63.0
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+      - "14250:14250"
+    environment:
+      COLLECTOR_ZIPKIN_HTTP_PORT: 9411
+      COLLECTOR_OTLP_ENABLED: true
+      COLLECTOR_OTLP_GRPC_PORT: 14250
 
 volumes:
   mysql_data:
+  log_data:
+  grafana_data:

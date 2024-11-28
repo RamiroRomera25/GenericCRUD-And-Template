@@ -120,6 +120,19 @@
 			<artifactId>firebase-admin</artifactId>
 			<version>9.4.1</version>
 		</dependency>
+
+		<!-- Logback JSON Encoder -->
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>8.0</version>
+		</dependency>
+
+		<!-- Micrometer Registry Prometheus -->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

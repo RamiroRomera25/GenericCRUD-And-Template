@@ -1,0 +1,13 @@
+global:
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'noreplynotificationsdev@gmail.com'
+  smtp_auth_username: 'noreplynotificationsdev@gmail.com'
+  smtp_auth_password: 'tuvm buxz kbnx mqcd'
+
+route:
+  receiver: 'email'
+
+receivers:
+  - name: 'email'
+    email_configs:
+      - to: 'ramiromera25@gmail.com'
