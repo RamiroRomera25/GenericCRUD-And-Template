@@ -6,4 +6,5 @@ RUN mvn clean package -DskipTests
 FROM gcr.io/distroless/java17
 WORKDIR /app
 COPY --from=build /app/target/*.jar /app/app.jar
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+COPY /.tel/opentelemetry-javaagent.jar /app/opentelemetry-javaagent.jar
+ENTRYPOINT ["java", "-javaagent:/app/opentelemetry-javaagent.jar", "-Dotel.exporter.otlp.endpoint=http://otel-collector:4318", "-Dotel.resource.attributes=service.name=accounts-app", "-jar", "/app/app.jar"]

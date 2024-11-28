@@ -27,8 +27,13 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/generic
       SPRING_DATASOURCE_USERNAME: rami
       SPRING_DATASOURCE_PASSWORD: rami
+      OTEL_SERVICE_NAME: accounts-app
+      OTEL_TRACES_EXPORTER: jaeger
+      OTEL_EXPORTER_JAEGER_ENDPOINT: http://jaeger:14250
     ports:
       - "8080:8080"
+    volumes:
+      - log_data:/logs
     depends_on:
       mysql:
         condition: service_healthy
