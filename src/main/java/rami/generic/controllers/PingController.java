@@ -14,27 +14,28 @@ import rami.generic.dtos.common.ErrorApi;
 @RequestMapping("")
 public class PingController {
 
+    /**
+     * The health check method.
+     * @return the word pong
+     */
     @Operation(
-            summary = "",
-            description = ""
-    )
+            summary = "Check healthy of the app",
+            description = "If the app it's alive response pong")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Successful",
+                    description = "Successful operation",
                     content = @Content(
                             schema = @Schema(implementation = String.class)
                     )
             ),
             @ApiResponse(
                     responseCode = "500",
-                    description = "Internal Error Server",
+                    description = "Internal Server Error",
                     content = @Content(
-                            schema = @Schema(implementation = ErrorApi.class)
-                    )
+                            schema = @Schema(implementation = ErrorApi.class))
             )
     })
-
     @GetMapping("/ping")
     public String ping() {
         return "pong";
