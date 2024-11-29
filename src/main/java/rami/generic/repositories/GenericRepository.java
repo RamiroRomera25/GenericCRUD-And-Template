@@ -2,6 +2,7 @@ package rami.generic.repositories;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -11,7 +12,8 @@ import java.util.List;
 
 @NoRepositoryBean
 public interface GenericRepository<E, ID> extends JpaRepository<E, ID>, JpaSpecificationExecutor<E> {
-    Page<E> findAll(Specification<E> filter, Pageable pageable);
+    Page<E> findAll(Pageable pageable, Specification<E> filter, Sort sort);
+    Page<E> findAll(Pageable pageable, Sort sort);
     List<E> findAll(Specification<E> filter);
 
 
