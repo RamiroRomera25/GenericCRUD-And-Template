@@ -1,3 +1,10 @@
+
+
+
+version: 'NOT WORKING'
+
+
+
 services:
   mariadb:
     image: mariadb:11.6.2
