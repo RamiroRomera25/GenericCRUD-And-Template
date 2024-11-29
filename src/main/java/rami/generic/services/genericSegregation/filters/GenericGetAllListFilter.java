@@ -22,11 +22,13 @@ public interface GenericGetAllListFilter<E, I, M, DTOFILTER> extends GenericMapp
 
     default List<M> getAll(DTOFILTER filter, Sort sort) {
         Specification<E> spec = specificationBuilder()
-                                .withDynamicFilter(this.getFilterMap(filter))
-                                .build();
-        List<E> entityList = getRepository().findAll(spec, sort);
+                .withDynamicFilter(this.getFilterMap(filter))
+                .build();
+        List<E> entityList = getRepository()
+            .findAll(spec,
+                    sort);
         if (!entityList.isEmpty()) {
-            return getMapper().map(entityList, new TypeToken<List<M>>(){}.getType());
+            return getMapper().map(entityList, new TypeToken<List<M>>() {}.getType());
         } else {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No content retrieved.");
         }

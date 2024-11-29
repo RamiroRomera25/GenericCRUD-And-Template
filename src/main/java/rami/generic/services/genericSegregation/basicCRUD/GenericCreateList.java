@@ -7,6 +7,7 @@ import rami.generic.repositories.GenericRepository;
 
 import java.util.List;
 
+
 public interface GenericCreateList<E, I, M, DTOPOST> {
     ModelMapper getMapper();
 
