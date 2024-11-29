@@ -115,11 +115,11 @@
 			<version>42.7.4</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.google.firebase</groupId>
-			<artifactId>firebase-admin</artifactId>
-			<version>9.4.1</version>
-		</dependency>
+<!--		<dependency>                                      -->
+<!--			<groupId>com.google.firebase</groupId>        -->
+<!--			<artifactId>firebase-admin</artifactId>       -->
+<!--			<version>9.4.1</version>                      -->
+<!--		</dependency>-->
 
 		<!-- MariaDB Database dependency -->
 		<dependency>

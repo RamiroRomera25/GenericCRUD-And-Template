@@ -1,7 +1,7 @@
 package rami.generic.services.impl;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +77,7 @@ public class DummyServiceImplFirebase implements DummyService {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No content retrieved.");
         }
     }
-
+/*
     @Override
     public DummyModel create(DummyDtoPost dtoPost) {
 
@@ -95,4 +95,6 @@ public class DummyServiceImplFirebase implements DummyService {
     private String getCollectionName() {
         return "dummy";
     }
+
+ */
 }
