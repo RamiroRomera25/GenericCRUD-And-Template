@@ -15,7 +15,9 @@ public interface ControllerGetAllPageFilter<E, I, M, DTOFILTER, SERVICE extends 
     @GetMapping("/page/filters")
     default ResponseEntity<Page<M>> getAllFilter(@RequestBody DTOFILTER filters,
                                                  @RequestParam(required = false) int page,
-                                                 @RequestParam(required = false) int size) {
+                                                 @RequestParam(required = false) int size,
+                                                 @RequestParam(required = false, defaultValue = "id") String sortBy,
+                                                 @RequestParam(required = false, defaultValue = "true") boolean isAscending) {
         return ResponseEntity.ok(getService().getAll(PageRequest.of(page, size),filters));
     }
 }
