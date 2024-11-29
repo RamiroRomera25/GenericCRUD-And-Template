@@ -120,6 +120,13 @@
 			<artifactId>firebase-admin</artifactId>
 			<version>9.4.1</version>
 		</dependency>
+
+		<!-- MariaDB Database dependency -->
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>3.5.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
