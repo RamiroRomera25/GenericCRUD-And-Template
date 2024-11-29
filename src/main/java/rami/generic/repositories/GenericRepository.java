@@ -12,10 +12,6 @@ import java.util.List;
 
 @NoRepositoryBean
 public interface GenericRepository<E, ID> extends JpaRepository<E, ID>, JpaSpecificationExecutor<E> {
-    Page<E> findAll(Pageable pageable, Specification<E> filter, Sort sort);
-    Page<E> findAll(Pageable pageable, Sort sort);
-    List<E> findAll(Specification<E> filter);
-
 
     // Si E extiende de Base Entity se pueden usar estos metodos
 //    default E softDeleteById(ID id) {

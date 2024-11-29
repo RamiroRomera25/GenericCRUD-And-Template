@@ -18,6 +18,6 @@ public interface ControllerGetAllPage<E, I, M, SERVICE extends GenericGetAllPage
                                            @RequestParam(required = false, defaultValue = "id") String sortBy,
                                            @RequestParam(required = false, defaultValue = "true") boolean isAscending) {
         Sort.Direction direction = isAscending ? Sort.Direction.ASC : Sort.Direction.DESC;
-        return ResponseEntity.ok(getService().getAll(PageRequest.of(page, size), Sort.by(direction, sortBy)));
+        return ResponseEntity.ok(getService().getAll(PageRequest.of(page, size, Sort.by(direction, sortBy))));
     }
 }

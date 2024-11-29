@@ -20,11 +20,11 @@ public interface GenericGetAllPageFilter<E, I, M, DTOFILTER> extends GenericMapp
 
     SpecificationBuilder<E> specificationBuilder();
 
-    default Page<M> getAll(Pageable pageable, DTOFILTER filter, Sort sort) {
+    default Page<M> getAll(Pageable pageable, DTOFILTER filter) {
         Specification<E> spec = specificationBuilder()
                                 .withDynamicFilter(this.getFilterMap(filter))
                                 .build();
-        Page<E> pageEntity = getRepository().findAll(pageable, spec, sort);
+        Page<E> pageEntity = getRepository().findAll(spec, pageable);
         if (!pageEntity.isEmpty()) {
             return getMapper().map(pageEntity, new TypeToken<Page<M>>(){}.getType());
         } else {

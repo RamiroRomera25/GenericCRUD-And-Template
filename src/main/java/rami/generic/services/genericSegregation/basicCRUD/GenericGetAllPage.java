@@ -15,8 +15,8 @@ public interface GenericGetAllPage<E, I, M> {
 
     GenericRepository<E, I> getRepository();
 
-    default Page<M> getAll(Pageable pageable, Sort sort) {
-        Page<E> pageEntity = getRepository().findAll(pageable, sort);
+    default Page<M> getAll(Pageable pageable) {
+        Page<E> pageEntity = getRepository().findAll(pageable);
         if (!pageEntity.isEmpty()) {
             return getMapper().map(pageEntity, new TypeToken<Page<M>>(){}.getType());
         } else {
