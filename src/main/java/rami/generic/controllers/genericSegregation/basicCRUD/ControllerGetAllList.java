@@ -1,5 +1,6 @@
 package rami.generic.controllers.genericSegregation.basicCRUD;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ public interface ControllerGetAllList<E, I, M, SERVICE extends GenericGetAllList
     @GetMapping("")
     default ResponseEntity<List<M>> getAll(@RequestParam(required = false, defaultValue = "id") String sortBy,
                                            @RequestParam(required = false, defaultValue = "true") boolean isAscending) {
-        return ResponseEntity.ok(getService().getAll());
+        Sort.Direction direction = isAscending ? Sort.Direction.ASC : Sort.Direction.DESC;
+        return ResponseEntity.ok(getService().getAll(Sort.by(direction, sortBy)));
     }
 }

@@ -1,5 +1,6 @@
 package rami.generic.controllers.genericSegregation.filters;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ public interface ControllerGetAllListFilter<E, I, M, DTOFILTER, SERVICE extends 
     default ResponseEntity<List<M>> getAllFilter(@RequestBody DTOFILTER filters,
                                                  @RequestParam(required = false, defaultValue = "id") String sortBy,
                                                  @RequestParam(required = false, defaultValue = "true") boolean isAscending) {
-        return ResponseEntity.ok(getService().getAll(filters));
+        Sort.Direction direction = isAscending ? Sort.Direction.ASC : Sort.Direction.DESC;
+        return ResponseEntity.ok(getService().getAll(filters, Sort.by(direction, sortBy)));
     }
 }

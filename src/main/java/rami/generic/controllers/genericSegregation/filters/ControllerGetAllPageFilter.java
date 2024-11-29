@@ -2,6 +2,7 @@ package rami.generic.controllers.genericSegregation.filters;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ public interface ControllerGetAllPageFilter<E, I, M, DTOFILTER, SERVICE extends 
                                                  @RequestParam(required = false) int size,
                                                  @RequestParam(required = false, defaultValue = "id") String sortBy,
                                                  @RequestParam(required = false, defaultValue = "true") boolean isAscending) {
-        return ResponseEntity.ok(getService().getAll(PageRequest.of(page, size),filters));
+        Sort.Direction direction = isAscending ? Sort.Direction.ASC : Sort.Direction.DESC;
+        return ResponseEntity.ok(getService().getAll(PageRequest.of(page, size), filters, Sort.by(direction, sortBy)));
     }
 }
