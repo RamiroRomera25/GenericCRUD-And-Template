@@ -8,16 +8,18 @@ import rami.generic.services.genericSegregation.basicCRUD.ServiceCreate;
 import rami.generic.services.genericSegregation.basicCRUD.ServiceGetAllList;
 import rami.generic.services.genericSegregation.basicCRUD.ServiceGetById;
 import rami.generic.services.genericSegregation.compositeUniqueAtt.ServiceGetByCompositeUniqueAtt;
+import rami.generic.services.genericSegregation.compositeUniqueAtt.ServiceUpdateByCompositeUniqueAtt;
 import rami.generic.services.genericSegregation.uniqueAtt.ServiceGetByUniqueAtt;
 
 import java.util.UUID;
 
 @Service
 public interface PersonService
-extends ServiceGetAllList<PersonEntity, UUID, PersonModel>,
-        ServiceGetById<PersonEntity, UUID, PersonModel>,
-        ServiceCreate<PersonEntity, UUID, PersonModel, PersonDtoPost>,
-        ServiceGetByUniqueAtt<PersonEntity, UUID, PersonModel>,
-        ServiceGetByCompositeUniqueAtt<PersonEntity, UUID, PersonModel>
+extends ServiceGetAllList<PersonEntity, Long, PersonModel>,
+        ServiceGetById<PersonEntity, Long, PersonModel>,
+        ServiceCreate<PersonEntity, Long, PersonModel, PersonDtoPost>,
+        ServiceGetByUniqueAtt<PersonEntity, Long, PersonModel>,
+        ServiceGetByCompositeUniqueAtt<PersonEntity, Long, PersonModel>,
+        ServiceUpdateByCompositeUniqueAtt<PersonEntity, Long, PersonModel, PersonDtoPost>
 {
 }

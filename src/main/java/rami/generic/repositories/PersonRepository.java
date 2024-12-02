@@ -7,5 +7,5 @@ import rami.generic.entities.PersonEntity;
 import java.util.UUID;
 
 @Repository
-public interface PersonRepository extends GenericRepository<PersonEntity, UUID> {
+public interface PersonRepository extends GenericRepository<PersonEntity, Long> {
 }

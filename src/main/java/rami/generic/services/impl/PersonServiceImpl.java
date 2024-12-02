@@ -40,7 +40,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public GenericRepository<PersonEntity, UUID> getRepository() {
+    public GenericRepository<PersonEntity, Long> getRepository() {
         return personRepository;
     }
 

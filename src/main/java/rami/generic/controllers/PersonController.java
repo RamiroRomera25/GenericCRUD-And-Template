@@ -16,6 +16,7 @@ import rami.generic.controllers.genericSegregation.basicCRUD.ControllerSoftDelet
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerSoftDeleteList;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerUpdate;
 import rami.generic.controllers.genericSegregation.compositeUniqueAtt.ControllerGetByCompositeUniqueAtt;
+import rami.generic.controllers.genericSegregation.compositeUniqueAtt.ControllerUpdateByCompositeUniqueAtt;
 import rami.generic.controllers.genericSegregation.filters.ControllerGetAllListFilter;
 import rami.generic.controllers.genericSegregation.filters.ControllerGetAllPageFilter;
 import rami.generic.controllers.genericSegregation.uniqueAtt.ControllerGetByUniqueAtt;
@@ -37,11 +38,12 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/v5/person")
 public class PersonController
-implements ControllerGetById<PersonEntity, UUID, PersonModel, PersonService>,
-           ControllerGetAllList<PersonEntity, UUID, PersonModel, PersonService>,
-           ControllerCreate<PersonEntity, UUID, PersonModel, PersonDtoPost, PersonService>,
-           ControllerGetByCompositeUniqueAtt<PersonEntity, UUID, PersonModel, PersonService>,
-           ControllerGetByUniqueAtt<PersonEntity, UUID, PersonModel, PersonService>
+implements ControllerGetById<PersonEntity, Long, PersonModel, PersonService>,
+           ControllerGetAllList<PersonEntity, Long, PersonModel, PersonService>,
+           ControllerCreate<PersonEntity, Long, PersonModel, PersonDtoPost, PersonService>,
+           ControllerGetByCompositeUniqueAtt<PersonEntity, Long, PersonModel, PersonService>,
+           ControllerGetByUniqueAtt<PersonEntity, Long, PersonModel, PersonService>,
+           ControllerUpdateByCompositeUniqueAtt<PersonEntity, Long, PersonModel, PersonDtoPost, PersonService>
 {
     @Autowired
     private PersonService personService;
