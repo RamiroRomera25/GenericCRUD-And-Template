@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import rami.generic.dtos.common.ErrorApi;
-import rami.generic.services.genericSegregation.basicCRUD.GenericGetAllList;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceGetAllList;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ import java.util.List;
  * @param <M> the model type to return
  * @param <SERVICE> the service interface that implements the retrieval logic
  */
-public interface ControllerGetAllList<E, I, M, SERVICE extends GenericGetAllList<E, I, M>> {
+public interface ControllerGetAllList<E, I, M, SERVICE extends ServiceGetAllList<E, I, M>> {
 
     /**
      * Gets the service instance for retrieving entities.

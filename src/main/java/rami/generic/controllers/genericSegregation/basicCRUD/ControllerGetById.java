@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import rami.generic.dtos.common.ErrorApi;
-import rami.generic.services.genericSegregation.basicCRUD.GenericGetById;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceGetById;
 
 /**
  * Generic interface for retrieving an entity by its ID through REST controllers.
@@ -20,7 +20,7 @@ import rami.generic.services.genericSegregation.basicCRUD.GenericGetById;
  * @param <M> the model type to return
  * @param <SERVICE> the service interface that implements the retrieval logic
  */
-public interface ControllerGetById<E, I, M, SERVICE extends GenericGetById<E, I, M>> {
+public interface ControllerGetById<E, I, M, SERVICE extends ServiceGetById<E, I, M>> {
 
     /**
      * Gets the service instance for entity retrieval by ID.

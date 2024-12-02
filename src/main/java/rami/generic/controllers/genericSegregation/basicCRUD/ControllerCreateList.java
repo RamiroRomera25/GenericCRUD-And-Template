@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import rami.generic.dtos.common.ErrorApi;
-import rami.generic.services.genericSegregation.basicCRUD.GenericCreateList;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceCreateList;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ import java.util.List;
  * @param <DTOPOST> the DTO type used for creating entities
  * @param <SERVICE> the service interface that implements the creation logic
  */
-public interface ControllerCreateList<E, I, M, DTOPOST, SERVICE extends GenericCreateList<E, I, M, DTOPOST>> {
+public interface ControllerCreateList<E, I, M, DTOPOST, SERVICE extends ServiceCreateList<E, I, M, DTOPOST>> {
 
     /**
      * Gets the service instance for creating a list of entities.
