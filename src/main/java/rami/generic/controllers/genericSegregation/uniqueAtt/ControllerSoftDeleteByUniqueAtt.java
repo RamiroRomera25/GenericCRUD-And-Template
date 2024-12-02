@@ -1,6 +1,8 @@
 package rami.generic.controllers.genericSegregation.uniqueAtt;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,13 +15,13 @@ public interface ControllerSoftDeleteByUniqueAtt<E extends BaseEntity, I, M, SER
 
     SERVICE getService();
 
-    @PutMapping("/unique/{value}")
+    @DeleteMapping("/unique/{value}")
     default ResponseEntity<M> deleteByCompositeUniqueAtt(@RequestParam(required = false, defaultValue = "id") String field,
                                                          @PathVariable Object value) {
         return ResponseEntity.ok(getService().delete(field, value));
     }
 
-    @PutMapping("/unique/{value}/reactivate")
+    @PatchMapping("/unique/{value}/reactivate")
     default ResponseEntity<M> reactivateByCompositeUniqueAtt(@RequestParam(required = false, defaultValue = "id") String field,
                                                              @PathVariable Object value) {
         return ResponseEntity.ok(getService().reactivate(field, value));
