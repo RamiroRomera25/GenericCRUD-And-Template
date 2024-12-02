@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import rami.generic.repositories.GenericRepository;
 
 
-public interface GenericCreate<E, I, M, DTOPOST> {
+public interface ServiceCreate<E, I, M, DTOPOST> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

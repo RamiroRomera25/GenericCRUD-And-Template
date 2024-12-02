@@ -8,7 +8,7 @@ import rami.generic.repositories.GenericRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface GenericSoftDeleteList<E extends BaseEntity, I, M> extends GenericGetById<E, I, M> {
+public interface ServiceSoftDeleteList<E extends BaseEntity, I, M> extends ServiceGetById<E, I, M> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

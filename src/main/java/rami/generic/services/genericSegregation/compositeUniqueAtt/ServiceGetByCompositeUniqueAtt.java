@@ -7,7 +7,7 @@ import rami.generic.repositories.specs.SpecificationBuilder;
 
 import java.util.Map;
 
-public interface GenericGetByCompositeUniqueAtt<E, I, M> {
+public interface ServiceGetByCompositeUniqueAtt<E, I, M> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

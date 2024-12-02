@@ -6,31 +6,31 @@ import rami.generic.dtos.dummy.DummyDtoPost;
 import rami.generic.dtos.dummy.DummyDtoPut;
 import rami.generic.entities.DummyEntity;
 import rami.generic.models.DummyModel;
-import rami.generic.services.genericSegregation.basicCRUD.GenericCreate;
-import rami.generic.services.genericSegregation.basicCRUD.GenericCreateList;
-import rami.generic.services.genericSegregation.basicCRUD.GenericGetAllList;
-import rami.generic.services.genericSegregation.basicCRUD.GenericGetAllPage;
-import rami.generic.services.genericSegregation.basicCRUD.GenericGetById;
-import rami.generic.services.genericSegregation.basicCRUD.GenericSoftDelete;
-import rami.generic.services.genericSegregation.basicCRUD.GenericSoftDeleteList;
-import rami.generic.services.genericSegregation.basicCRUD.GenericUpdate;
-import rami.generic.services.genericSegregation.filters.GenericGetAllListFilter;
-import rami.generic.services.genericSegregation.filters.GenericGetAllPageFilter;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceCreate;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceCreateList;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceGetAllList;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceGetAllPage;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceGetById;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceSoftDelete;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceSoftDeleteList;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceUpdate;
+import rami.generic.services.genericSegregation.filters.ServiceGetAllListFilter;
+import rami.generic.services.genericSegregation.filters.ServiceGetAllPageFilter;
 
 import java.util.List;
 
 @Service
 public interface DummyService
-extends GenericGetAllPage<DummyEntity, Long, DummyModel>,
-        GenericGetAllList<DummyEntity, Long, DummyModel>,
-        GenericGetById<DummyEntity, Long, DummyModel>,
-        GenericCreate<DummyEntity, Long, DummyModel, DummyDtoPost>,
-        GenericUpdate<DummyEntity, Long, DummyModel, DummyDtoPut>,
-        GenericSoftDelete<DummyEntity, Long, DummyModel>,
-        GenericGetAllListFilter<DummyEntity, Long, DummyModel, DummyDtoFilter>,
-        GenericGetAllPageFilter<DummyEntity, Long, DummyModel, DummyDtoFilter>,
-        GenericCreateList<DummyEntity, Long, DummyModel, DummyDtoPost>,
-        GenericSoftDeleteList<DummyEntity, Long, DummyModel>
+extends ServiceGetAllPage<DummyEntity, Long, DummyModel>,
+        ServiceGetAllList<DummyEntity, Long, DummyModel>,
+        ServiceGetById<DummyEntity, Long, DummyModel>,
+        ServiceCreate<DummyEntity, Long, DummyModel, DummyDtoPost>,
+        ServiceUpdate<DummyEntity, Long, DummyModel, DummyDtoPut>,
+        ServiceSoftDelete<DummyEntity, Long, DummyModel>,
+        ServiceGetAllListFilter<DummyEntity, Long, DummyModel, DummyDtoFilter>,
+        ServiceGetAllPageFilter<DummyEntity, Long, DummyModel, DummyDtoFilter>,
+        ServiceCreateList<DummyEntity, Long, DummyModel, DummyDtoPost>,
+        ServiceSoftDeleteList<DummyEntity, Long, DummyModel>
         {
     List<DummyModel> dummyLike(DummyDtoFilter filter);
 }

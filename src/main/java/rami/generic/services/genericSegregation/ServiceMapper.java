@@ -5,7 +5,7 @@ import org.springframework.util.ReflectionUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public interface GenericMapper {
+public interface ServiceMapper {
     default Map<String, Object> getFilterMap(Object filter) {
         Map<String, Object> filterMap = new HashMap<>();
 

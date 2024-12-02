@@ -3,11 +3,11 @@ package rami.generic.controllers.genericSegregation.compositeUniqueAtt;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import rami.generic.services.genericSegregation.compositeUniqueAtt.GenericGetByCompositeUniqueAtt;
+import rami.generic.services.genericSegregation.compositeUniqueAtt.ServiceGetByCompositeUniqueAtt;
 
 import java.util.Map;
 
-public interface ControllerGetByCompositeUniqueAtt<E, I, M, SERVICE extends GenericGetByCompositeUniqueAtt<E, I, M>> {
+public interface ControllerGetByCompositeUniqueAtt<E, I, M, SERVICE extends ServiceGetByCompositeUniqueAtt<E, I, M>> {
 
     SERVICE getService();
 

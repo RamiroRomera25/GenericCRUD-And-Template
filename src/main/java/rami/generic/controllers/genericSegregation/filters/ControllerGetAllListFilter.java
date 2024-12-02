@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import rami.generic.dtos.common.ErrorApi;
-import rami.generic.services.genericSegregation.filters.GenericGetAllListFilter;
+import rami.generic.services.genericSegregation.filters.ServiceGetAllListFilter;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ import java.util.List;
  * @param <DTOFILTER> the DTO type for filtering the entities
  * @param <SERVICE> the service interface that implements the retrieval logic with filters
  */
-public interface ControllerGetAllListFilter<E, I, M, DTOFILTER, SERVICE extends GenericGetAllListFilter<E, I, M, DTOFILTER>> {
+public interface ControllerGetAllListFilter<E, I, M, DTOFILTER, SERVICE extends ServiceGetAllListFilter<E, I, M, DTOFILTER>> {
 
     /**
      * Gets the service instance for filtered retrieval of entities.

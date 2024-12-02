@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import rami.generic.dtos.common.ErrorApi;
-import rami.generic.services.genericSegregation.basicCRUD.GenericGetAllPage;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceGetAllPage;
 
 /**
  * Generic interface for retrieving paginated entities through REST controllers.
@@ -22,7 +22,7 @@ import rami.generic.services.genericSegregation.basicCRUD.GenericGetAllPage;
  * @param <M> the model type to return
  * @param <SERVICE> the service interface that implements the retrieval logic
  */
-public interface ControllerGetAllPage<E, I, M, SERVICE extends GenericGetAllPage<E, I, M>> {
+public interface ControllerGetAllPage<E, I, M, SERVICE extends ServiceGetAllPage<E, I, M>> {
 
     /**
      * Gets the service instance for paginated retrieval.

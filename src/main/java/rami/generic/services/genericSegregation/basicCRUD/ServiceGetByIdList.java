@@ -9,7 +9,7 @@ import rami.generic.repositories.GenericRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface GenericGetByIdList<E, I, M> {
+public interface ServiceGetByIdList<E, I, M> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

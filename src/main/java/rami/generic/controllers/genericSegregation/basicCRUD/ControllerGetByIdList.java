@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import rami.generic.dtos.common.ErrorApi;
-import rami.generic.services.genericSegregation.basicCRUD.GenericGetByIdList;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceGetByIdList;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import java.util.List;
  * @param <M> the model type to return
  * @param <SERVICE> the service interface that implements the retrieval logic
  */
-public interface ControllerGetByIdList<E, I, M, SERVICE extends GenericGetByIdList<E, I, M>> {
+public interface ControllerGetByIdList<E, I, M, SERVICE extends ServiceGetByIdList<E, I, M>> {
 
     /**
      * Gets the service instance for entity retrieval by ID.

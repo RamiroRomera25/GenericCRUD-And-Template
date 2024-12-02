@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import rami.generic.dtos.common.ErrorApi;
-import rami.generic.services.genericSegregation.basicCRUD.GenericUpdate;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceUpdate;
 
 /**
  * Generic interface for updating an entity through a REST controller.
@@ -22,7 +22,7 @@ import rami.generic.services.genericSegregation.basicCRUD.GenericUpdate;
  * @param <DTOPUT> the DTO type for updating the entity
  * @param <SERVICE> the service interface that implements the update logic
  */
-public interface ControllerUpdate<E, I, M, DTOPUT, SERVICE extends GenericUpdate<E, I, M, DTOPUT>> {
+public interface ControllerUpdate<E, I, M, DTOPUT, SERVICE extends ServiceUpdate<E, I, M, DTOPUT>> {
 
     /**
      * Gets the service instance for updating an entity.

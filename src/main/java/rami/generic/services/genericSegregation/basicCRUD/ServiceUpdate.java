@@ -3,7 +3,7 @@ package rami.generic.services.genericSegregation.basicCRUD;
 import org.modelmapper.ModelMapper;
 import rami.generic.repositories.GenericRepository;
 
-public interface GenericUpdate<E, I, M, DTOPUT> extends GenericGetById<E, I, M> {
+public interface ServiceUpdate<E, I, M, DTOPUT> extends ServiceGetById<E, I, M> {
 
     ModelMapper getMapper();
 

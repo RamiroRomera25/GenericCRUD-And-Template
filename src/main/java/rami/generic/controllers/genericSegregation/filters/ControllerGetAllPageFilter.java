@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import rami.generic.dtos.common.ErrorApi;
-import rami.generic.services.genericSegregation.filters.GenericGetAllPageFilter;
+import rami.generic.services.genericSegregation.filters.ServiceGetAllPageFilter;
 
 /**
  * Generic interface for controllers that retrieve a paginated and filtered list of entities.
@@ -23,7 +23,7 @@ import rami.generic.services.genericSegregation.filters.GenericGetAllPageFilter;
  * @param <M> the model type to return
  * @param <DTOFILTER> the DTO type used for filtering the entities
  */
-public interface ControllerGetAllPageFilter<E, I, M, DTOFILTER, SERVICE extends GenericGetAllPageFilter<E, I, M, DTOFILTER>> {
+public interface ControllerGetAllPageFilter<E, I, M, DTOFILTER, SERVICE extends ServiceGetAllPageFilter<E, I, M, DTOFILTER>> {
 
     /**
      * Retrieves the service instance for handling the operation.

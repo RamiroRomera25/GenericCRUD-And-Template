@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import rami.generic.repositories.GenericRepository;
 
-public interface GenericGetById<E, I, M> {
+public interface ServiceGetById<E, I, M> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

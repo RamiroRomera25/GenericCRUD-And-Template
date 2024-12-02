@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import rami.generic.entities.base.BaseEntity;
 import rami.generic.repositories.GenericRepository;
 
-public interface GenericSoftDeleteByUniqueAtt<E extends BaseEntity, I, M> extends GenericGetByUniqueAtt<E, I, M> {
+public interface ServiceSoftDeleteByUniqueAtt<E extends BaseEntity, I, M> extends ServiceGetByUniqueAtt<E, I, M> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

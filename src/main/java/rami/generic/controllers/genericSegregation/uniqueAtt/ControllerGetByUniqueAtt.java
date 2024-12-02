@@ -4,9 +4,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import rami.generic.services.genericSegregation.uniqueAtt.GenericGetByUniqueAtt;
+import rami.generic.services.genericSegregation.uniqueAtt.ServiceGetByUniqueAtt;
 
-public interface ControllerGetByUniqueAtt<E, I, M, SERVICE extends GenericGetByUniqueAtt<E, I, M>> {
+public interface ControllerGetByUniqueAtt<E, I, M, SERVICE extends ServiceGetByUniqueAtt<E, I, M>> {
 
     SERVICE getService();
 

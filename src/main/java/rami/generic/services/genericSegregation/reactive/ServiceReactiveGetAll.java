@@ -2,9 +2,9 @@ package rami.generic.services.genericSegregation.reactive;
 
 import org.modelmapper.ModelMapper;
 import rami.generic.repositories.specs.SpecificationBuilder;
-import rami.generic.services.genericSegregation.GenericMapper;
+import rami.generic.services.genericSegregation.ServiceMapper;
 
-public interface GenericReactiveGetAll<E, I, M, DTOFILTER> extends GenericMapper {
+public interface ServiceReactiveGetAll<E, I, M, DTOFILTER> extends ServiceMapper {
     ModelMapper getMapper();
 
 //    GenericRepositoryReactive<E, I> getRepository();

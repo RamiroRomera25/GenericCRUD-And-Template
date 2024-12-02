@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import rami.generic.dtos.common.ErrorApi;
-import rami.generic.services.genericSegregation.basicCRUD.GenericCreate;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceCreate;
 
 /**
  * Generic interface for creating entities through REST controllers.
@@ -23,7 +23,7 @@ import rami.generic.services.genericSegregation.basicCRUD.GenericCreate;
  * @param <DTOPOST> the DTO type used for creating entities
  * @param <SERVICE> the service interface that implements the creation logic
  */
-public interface ControllerCreate<E, I, M, DTOPOST, SERVICE extends GenericCreate<E, I, M, DTOPOST>> {
+public interface ControllerCreate<E, I, M, DTOPOST, SERVICE extends ServiceCreate<E, I, M, DTOPOST>> {
 
     /**
      * Gets the service instance for entity creation.

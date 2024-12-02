@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import rami.generic.dtos.common.ErrorApi;
 import rami.generic.entities.base.BaseEntity;
-import rami.generic.services.genericSegregation.basicCRUD.GenericSoftDeleteList;
+import rami.generic.services.genericSegregation.basicCRUD.ServiceSoftDeleteList;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import java.util.List;
  * @param <M> the model type to return
  * @param <SERVICE> the service interface that implements the soft delete and reactivation logic
  */
-public interface ControllerSoftDeleteList<E extends BaseEntity, I, M, SERVICE extends GenericSoftDeleteList<E, I, M>> {
+public interface ControllerSoftDeleteList<E extends BaseEntity, I, M, SERVICE extends ServiceSoftDeleteList<E, I, M>> {
 
     /**
      * Gets the service instance for soft delete and reactivation of a list of entities.

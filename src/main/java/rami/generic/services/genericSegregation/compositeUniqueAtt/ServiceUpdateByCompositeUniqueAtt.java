@@ -5,7 +5,7 @@ import rami.generic.repositories.GenericRepository;
 
 import java.util.Map;
 
-public interface GenericUpdateByCompositeUniqueAtt<E, I, M, DTOPUT> extends GenericGetByCompositeUniqueAtt<E, I, M> {
+public interface ServiceUpdateByCompositeUniqueAtt<E, I, M, DTOPUT> extends ServiceGetByCompositeUniqueAtt<E, I, M> {
 
     ModelMapper getMapper();
 
