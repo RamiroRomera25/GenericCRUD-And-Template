@@ -11,7 +11,7 @@ public interface ControllerGetByUniqueAtt<E, I, M, SERVICE extends ServiceGetByU
     SERVICE getService();
 
     @PostMapping("/unique/{value}")
-    default ResponseEntity<M> getByCompositeUniqueAtt(@RequestParam String field,
+    default ResponseEntity<M> getByCompositeUniqueAtt(@RequestParam(required = false, defaultValue = "id") String field,
                                                       @PathVariable Object value) {
         return ResponseEntity.ok(getService().getModelByUniqueField(field, value));
     }

@@ -18,14 +18,14 @@ public interface ServiceGetByUniqueAtt<E, I, M> {
 
     default E getByUniqueField(String uniqueField, Object value) {
         return getRepository().findOne(specificationBuilder().uniqueValue(uniqueField, value).build())
-                .orElseThrow(() -> new EntityNotFoundException(
-                    entityClass().getSimpleName() + " not found with " + uniqueField + ": " + value));
+            .orElseThrow(() -> new EntityNotFoundException(
+                entityClass().getSimpleName() + " not found with " + uniqueField + ": " + value));
     }
 
     default M getModelByUniqueField(String uniqueField, Object value) {
         return getRepository().findOne(specificationBuilder().uniqueValue(uniqueField, value).build())
-                .map((entity) -> getMapper().map(entity, modelClass()))
-                .orElseThrow(() -> new EntityNotFoundException(
-                        entityClass().getSimpleName() + " not found with " + uniqueField + ": " + value));
+            .map((entity) -> getMapper().map(entity, modelClass()))
+            .orElseThrow(() -> new EntityNotFoundException(
+                    entityClass().getSimpleName() + " not found with " + uniqueField + ": " + value));
     }
 }

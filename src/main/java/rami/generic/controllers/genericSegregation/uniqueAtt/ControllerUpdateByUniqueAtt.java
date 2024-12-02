@@ -14,7 +14,7 @@ public interface ControllerUpdateByUniqueAtt<E, I, M, DTOPUT, SERVICE extends Se
     SERVICE getService();
 
     @PutMapping("/unique/{value}")
-    default ResponseEntity<M> updateByCompositeUniqueAtt(@RequestParam String field,
+    default ResponseEntity<M> updateByCompositeUniqueAtt(@RequestParam(required = false, defaultValue = "id") String field,
                                                          @PathVariable Object value,
                                                          @RequestBody DTOPUT dtoPut) {
         return ResponseEntity.ok(getService().update(dtoPut, field, value));
