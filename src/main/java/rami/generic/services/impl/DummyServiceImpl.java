@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import rami.generic.dtos.DummyDtoFilter;
+import rami.generic.dtos.dummy.DummyDtoFilter;
 import rami.generic.entities.DummyEntity;
 import rami.generic.models.DummyModel;
 import rami.generic.repositories.DummyRepository;

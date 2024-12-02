@@ -3,7 +3,7 @@ package rami.generic.services.genericSegregation.uniqueAtt;
 import org.modelmapper.ModelMapper;
 import rami.generic.repositories.GenericRepository;
 
-public interface GenericUpdateByUniqueAtt<E, I, M, DTOPUT> extends GenericFilterByUniqueAtt<E, I, M> {
+public interface GenericUpdateByUniqueAtt<E, I, M, DTOPUT> extends GenericGetByUniqueAtt<E, I, M> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

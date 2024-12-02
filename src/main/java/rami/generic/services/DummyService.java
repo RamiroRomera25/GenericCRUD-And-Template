@@ -1,9 +1,9 @@
 package rami.generic.services;
 
 import org.springframework.stereotype.Service;
-import rami.generic.dtos.DummyDtoFilter;
-import rami.generic.dtos.DummyDtoPost;
-import rami.generic.dtos.DummyDtoPut;
+import rami.generic.dtos.dummy.DummyDtoFilter;
+import rami.generic.dtos.dummy.DummyDtoPost;
+import rami.generic.dtos.dummy.DummyDtoPut;
 import rami.generic.entities.DummyEntity;
 import rami.generic.models.DummyModel;
 import rami.generic.services.genericSegregation.basicCRUD.GenericCreate;

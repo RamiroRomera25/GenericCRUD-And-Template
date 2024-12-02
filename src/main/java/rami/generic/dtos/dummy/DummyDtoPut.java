@@ -1,12 +1,11 @@
-package rami.generic.dtos;
+package rami.generic.dtos.dummy;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class DummyDto {
-    private Long id;
+public class DummyDtoPut {
     private String dummy;
-    private Boolean isActive;
+    private Boolean active;
 }

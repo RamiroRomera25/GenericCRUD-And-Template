@@ -5,7 +5,7 @@ import org.modelmapper.ModelMapper;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.specs.SpecificationBuilder;
 
-public interface GenericFilterByUniqueAtt<E, I, M> {
+public interface GenericGetByUniqueAtt<E, I, M> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

@@ -6,7 +6,7 @@ import rami.generic.repositories.GenericRepository;
 
 import java.util.Map;
 
-public interface GenericSoftDeleteByCompositeUniqueAtt<E extends BaseEntity, I, M> extends GenericFilterByCompositeUniqueAtt<E, I, M> {
+public interface GenericSoftDeleteByCompositeUniqueAtt<E extends BaseEntity, I, M> extends GenericGetByCompositeUniqueAtt<E, I, M> {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();

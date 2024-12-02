@@ -3,6 +3,8 @@ package rami.generic.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerCreate;
@@ -13,42 +15,39 @@ import rami.generic.controllers.genericSegregation.basicCRUD.ControllerGetById;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerSoftDelete;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerSoftDeleteList;
 import rami.generic.controllers.genericSegregation.basicCRUD.ControllerUpdate;
+import rami.generic.controllers.genericSegregation.compositeUniqueAtt.ControllerGetByCompositeUniqueAtt;
 import rami.generic.controllers.genericSegregation.filters.ControllerGetAllListFilter;
 import rami.generic.controllers.genericSegregation.filters.ControllerGetAllPageFilter;
+import rami.generic.controllers.genericSegregation.uniqueAtt.ControllerGetByUniqueAtt;
 import rami.generic.dtos.dummy.DummyDtoFilter;
 import rami.generic.dtos.dummy.DummyDtoPost;
 import rami.generic.dtos.dummy.DummyDtoPut;
+import rami.generic.dtos.person.PersonDtoPost;
 import rami.generic.entities.DummyEntity;
+import rami.generic.entities.PersonEntity;
 import rami.generic.models.DummyModel;
+import rami.generic.models.PersonModel;
 import rami.generic.services.DummyService;
+import rami.generic.services.PersonService;
 
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("/v5/dummy")
-public class DummyController
-implements ControllerGetById<DummyEntity, Long, DummyModel, DummyService>,
-           ControllerGetAllList<DummyEntity, Long, DummyModel, DummyService>,
-           ControllerGetAllPage<DummyEntity, Long, DummyModel, DummyService>,
-           ControllerGetAllPageFilter<DummyEntity, Long, DummyModel, DummyDtoFilter, DummyService>,
-           ControllerGetAllListFilter<DummyEntity, Long, DummyModel, DummyDtoFilter, DummyService>,
-           ControllerSoftDelete<DummyEntity, Long, DummyModel, DummyService>,
-           ControllerUpdate<DummyEntity, Long, DummyModel, DummyDtoPut, DummyService>,
-           ControllerCreate<DummyEntity, Long, DummyModel, DummyDtoPost, DummyService>,
-           ControllerCreateList<DummyEntity, Long, DummyModel, DummyDtoPost, DummyService>,
-           ControllerSoftDeleteList<DummyEntity, Long, DummyModel, DummyService>
+@RequestMapping("/v5/person")
+public class PersonController
+implements ControllerGetById<PersonEntity, UUID, PersonModel, PersonService>,
+           ControllerGetAllList<PersonEntity, UUID, PersonModel, PersonService>,
+           ControllerCreate<PersonEntity, UUID, PersonModel, PersonDtoPost, PersonService>,
+           ControllerGetByCompositeUniqueAtt<PersonEntity, UUID, PersonModel, PersonService>,
+           ControllerGetByUniqueAtt<PersonEntity, UUID, PersonModel, PersonService>
 {
-
     @Autowired
-    private DummyService dummyService;
-
-    @GetMapping("/like")
-    public ResponseEntity<List<DummyModel>> getDummiesLike(DummyDtoFilter filter) {
-        return ResponseEntity.ok(dummyService.dummyLike(filter));
-    }
+    private PersonService personService;
 
     @Override
-    public DummyService getService() {
-        return dummyService;
+    public PersonService getService() {
+        return personService;
     }
 }

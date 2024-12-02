@@ -1,4 +1,4 @@
-package rami.generic.dtos;
+package rami.generic.dtos.dummy;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
