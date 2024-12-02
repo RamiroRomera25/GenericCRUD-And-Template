@@ -28,9 +28,10 @@
     - V2: interfaz con default
     - V3: implementación de filtros y auditoría automatica, incluyendo todo lo implementado en anteriores versiones.
     - V4: implementacion de patron builder para filtros y filtrado dinamico.
-    - V5: implementacion de clave compuesta o unica para funciones CRUD y segregacion de interfaz.
+    - V5: implementacion de clave compuesta o unica para funciones CRUD y segregacion de interfaz en el controller
+    - V6: recolectando ideas :)
 </p>
 
 <h1 align="center">
-  🍃 Esta en proceso la V5 🚀
+  🍃 Esta en proceso la V6 🚀
 </h1>
