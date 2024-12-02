@@ -21,7 +21,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PersonModel {
-    private UUID id;
+    private Long id;
 
     private String firstName;
 
