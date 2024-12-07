@@ -6,7 +6,6 @@ public class StateApp {
     public void main(String[] args) {
         StateMachine<String, String> stateMachine = new StateMachine<>("INITIAL");
 
-        // Agregar transiciones con métodos separados
         stateMachine.addTransition("INITIAL", "PROCESSING", (state, params) ->
                 this.startProcessing(state, params)
         );
@@ -15,7 +14,6 @@ public class StateApp {
                 this.completeProcessing(state, params)
         );
 
-        // Ejecutar transiciones
         System.out.println("Current state: " + stateMachine.getCurrentState());
         System.out.println(stateMachine.executeTransition("PROCESSING", "Alice", 42));
 

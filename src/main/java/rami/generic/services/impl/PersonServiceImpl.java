@@ -93,7 +93,6 @@ public class PersonServiceImpl implements PersonService {
         if (this.getByUniqueField("email", dtoPost.getEmail()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Este mail ya esta registado");
         }
-
         return PersonService.super.create(dtoPost);
     }
     //#endregion
@@ -102,16 +101,19 @@ public class PersonServiceImpl implements PersonService {
     public PersonModel upgradeLevel1(PersonEntity person, BigInteger dni, DocumentType documentType) {
         person.setDocumentNumber(dni);
         person.setDocumentType(documentType);
+        person.setLevel(CidiLevel.LEVEL_1);
         return modelMapper.map(personRepository.save(person), PersonModel.class);
     }
 
     public PersonModel upgradeLevel2(PersonEntity person, List<Long> idFamiliarGroup) {
         person.setFamiliarGroup(this.getByIdList(idFamiliarGroup));
+        person.setLevel(CidiLevel.LEVEL_2);
         return modelMapper.map(personRepository.save(person), PersonModel.class);
     }
 
     public PersonModel applySanction(PersonEntity person) {
         person.setEndSanction(LocalDateTime.now().plusDays(1L));
+        person.setLevel(CidiLevel.SANCTION);
         return modelMapper.map(personRepository.save(person), PersonModel.class);
     }
 
