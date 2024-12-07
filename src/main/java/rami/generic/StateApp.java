@@ -1,6 +1,5 @@
 package rami.generic;
 
-import rami.generic.enums.ExampleStates;
 import rami.generic.services.stateMachine.StateMachine;
 
 public class StateApp {

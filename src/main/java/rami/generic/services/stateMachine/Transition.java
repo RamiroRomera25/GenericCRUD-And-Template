@@ -3,7 +3,6 @@ package rami.generic.services.stateMachine;
 import lombok.Getter;
 
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 @Getter
 public class Transition<S, R> {

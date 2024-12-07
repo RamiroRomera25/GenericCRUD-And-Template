@@ -2,16 +2,19 @@ package rami.generic.services.stateMachine;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 @Getter
+@Setter
 public class StateMachine<S, R> {
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private final Map<S, List<Transition<S, R>>> stateMap = new HashMap<>();
     private S currentState;
 

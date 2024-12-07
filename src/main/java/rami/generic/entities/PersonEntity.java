@@ -1,17 +1,18 @@
 package rami.generic.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
 import rami.generic.entities.base.BaseEntity;
 import rami.generic.enums.CidiLevel;
 import rami.generic.enums.DocumentType;
@@ -19,7 +20,7 @@ import rami.generic.enums.DocumentType;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -46,5 +47,10 @@ public class PersonEntity extends BaseEntity {
 
     private LocalDate birthdate;
 
-    private CidiLevel level;
+    private CidiLevel level = CidiLevel.LEVEL_0;
+
+    private LocalDateTime endSanction;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<PersonEntity> familiarGroup;
 }

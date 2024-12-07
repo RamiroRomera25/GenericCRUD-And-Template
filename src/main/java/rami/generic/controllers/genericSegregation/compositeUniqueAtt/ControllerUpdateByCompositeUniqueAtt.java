@@ -1,11 +1,8 @@
 package rami.generic.controllers.genericSegregation.compositeUniqueAtt;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import rami.generic.services.genericSegregation.compositeUniqueAtt.ServiceGetByCompositeUniqueAtt;
 import rami.generic.services.genericSegregation.compositeUniqueAtt.ServiceUpdateByCompositeUniqueAtt;
 
 import java.util.Map;
