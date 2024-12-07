@@ -13,6 +13,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import rami.generic.entities.base.BaseEntity;
+import rami.generic.enums.CidiLevel;
 import rami.generic.enums.DocumentType;
 
 import java.math.BigInteger;
@@ -44,4 +45,6 @@ public class PersonEntity extends BaseEntity {
     private BigInteger documentNumber;
 
     private LocalDate birthdate;
+
+    private CidiLevel level;
 }

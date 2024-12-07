@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import rami.generic.dtos.person.PersonDtoPost;
 import rami.generic.entities.PersonEntity;
+import rami.generic.enums.ExampleStates;
 import rami.generic.models.PersonModel;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.PersonRepository;
 import rami.generic.repositories.specs.SpecificationBuilder;
 import rami.generic.services.PersonService;
+import rami.generic.services.stateMachine.StateMachine;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,14 +22,23 @@ import java.util.UUID;
 @Service
 public class PersonServiceImpl implements PersonService {
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+
+    private final PersonRepository personRepository;
+
+    private final SpecificationBuilder<PersonEntity> specificationBuilder;
+
 
     @Autowired
-    private PersonRepository personRepository;
+    public PersonServiceImpl(ModelMapper modelMapper,
+                             PersonRepository repo,
+                             SpecificationBuilder<PersonEntity> specBuilder) {
+        this.modelMapper = modelMapper;
+        this.personRepository = repo;
+        this.specificationBuilder = specBuilder;
 
-    @Autowired
-    private SpecificationBuilder<PersonEntity> specificationBuilder;
+
+    }
 
     @Override
     public Class<PersonEntity> entityClass() {
