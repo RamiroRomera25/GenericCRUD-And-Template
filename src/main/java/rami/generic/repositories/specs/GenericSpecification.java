@@ -1,10 +1,13 @@
 package rami.generic.repositories.specs;
 
+import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Predicate;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -15,7 +18,28 @@ import java.util.Map;
 @NoArgsConstructor
 @Component
 public class GenericSpecification<E> {
-    
+
+    /**
+     * Gets the path for a field name, supporting nested properties with dot notation.
+     * @param root the root entity
+     * @param fieldName the field name, which may contain dots for nested properties
+     * @return the Path object for the field
+     */
+    private Path<?> getPath(Path<?> root, String fieldName) {
+        if (fieldName.contains(".")) {
+            String[] nestedFields = fieldName.split("\\.");
+            Path<?> path = root.get(nestedFields[0]);
+
+            for (int i = 1; i < nestedFields.length; i++) {
+                path = path.get(nestedFields[i]);
+            }
+
+            return path;
+        } else {
+            return root.get(fieldName);
+        }
+    }
+
     /**
      * Filter by attributtes.
      * @param attributes att for dinamyc search
@@ -33,7 +57,8 @@ public class GenericSpecification<E> {
                 Object value = entry.getValue();
 
                 if (value != null) {
-                    predicates = criteriaBuilder.and(predicates, criteriaBuilder.equal(root.get(key), value));
+                    Path<?> path = getPath(root, key);
+                    predicates = criteriaBuilder.and(predicates, criteriaBuilder.equal(path, value));
                 }
             }
 
@@ -57,9 +82,10 @@ public class GenericSpecification<E> {
                 Predicate orPredicates = criteriaBuilder.disjunction();
 
                 for (String field : entityFields) {
+                    Path<?> path = getPath(root, field);
                     orPredicates = criteriaBuilder.or(
                             orPredicates,
-                            criteriaBuilder.like(criteriaBuilder.lower(root.get(field).as(String.class)), likePattern)
+                            criteriaBuilder.like(criteriaBuilder.lower(path.as(String.class)), likePattern)
                     );
                 }
 
@@ -80,7 +106,8 @@ public class GenericSpecification<E> {
                 throw new IllegalArgumentException("Invalid inputs on filter between.");
             }
 
-            return criteriaBuilder.between(root.get(field), lower, higher);
+            Path<T> path = (Path<T>) getPath(root, field);
+            return criteriaBuilder.between(path, lower, higher);
         };
     }
 
@@ -90,7 +117,8 @@ public class GenericSpecification<E> {
                 throw new IllegalArgumentException("Invalid input on filter lower than.");
             }
 
-            return criteriaBuilder.lessThan(root.get(field), value);
+            Path<T> path = (Path<T>) getPath(root, field);
+            return criteriaBuilder.lessThan(path, value);
         };
     }
 
@@ -100,7 +128,8 @@ public class GenericSpecification<E> {
                 throw new IllegalArgumentException("Invalid input on filter lower than.");
             }
 
-            return criteriaBuilder.greaterThan(root.get(field), value);
+            Path<T> path = (Path<T>) getPath(root, field);
+            return criteriaBuilder.greaterThan(path, value);
         };
     }
 
@@ -113,9 +142,10 @@ public class GenericSpecification<E> {
                 Object value = entry.getValue();
 
                 if (value != null) {
+                    Path<?> path = getPath(root, key);
                     String likePattern = "%" + value.toString().toLowerCase(Locale.ROOT) + "%";
                     predicates = criteriaBuilder.and(predicates, criteriaBuilder.like(
-                            criteriaBuilder.lower(root.get(key).as(String.class)), likePattern));
+                            criteriaBuilder.lower(path.as(String.class)), likePattern));
                 }
             }
 
@@ -124,27 +154,22 @@ public class GenericSpecification<E> {
     }
 
     public Specification<E> uniqueValue(String fieldName, Object value) {
-        return (root, query, criteriaBuilder) -> {
-            if (value == null) {
-                return null;
-            }
-            return criteriaBuilder.equal(root.get(fieldName), value);
-        };
+        return this.compositeUniqueValues(Map.of(fieldName, value, "isActive", true));
     }
 
     public Specification<E> compositeUniqueValues(Map<String, Object> uniqueFields) {
         return (root, query, criteriaBuilder) -> {
-            Predicate[] predicates = new Predicate[uniqueFields.size()];
-            int i = 0;
+            List<Predicate> predicates = new ArrayList<>();
 
             for (Map.Entry<String, Object> entry : uniqueFields.entrySet()) {
                 String fieldName = entry.getKey();
                 Object value = entry.getValue();
 
-                predicates[i++] = criteriaBuilder.equal(root.get(fieldName), value);
+                Path<?> path = getPath(root, fieldName);
+                predicates.add(criteriaBuilder.equal(path, value));
             }
 
-            return criteriaBuilder.and(predicates);
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };
     }
 }

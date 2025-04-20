@@ -17,4 +17,9 @@ public interface ServiceCreate<E, I, M, DTOPOST> {
         E entityToSave = getMapper().map(dtoPost, entityClass());
         return getMapper().map(getRepository().save(entityToSave), modelClass());
     }
+
+    default M createWithEntity(E entity) {
+        E entityToSave = getMapper().map(entity, entityClass());
+        return getMapper().map(getRepository().save(entityToSave), modelClass());
+    }
 }
