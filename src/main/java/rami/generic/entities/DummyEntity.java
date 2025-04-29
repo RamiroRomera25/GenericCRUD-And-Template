@@ -32,4 +32,7 @@ public class DummyEntity extends BaseEntity {
     private Long composeID1;
 
     private Long composeID2;
+
+    @ManyToOne
+    private PersonEntity person;
 }

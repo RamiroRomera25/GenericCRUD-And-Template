@@ -17,7 +17,7 @@ import rami.generic.repositories.specs.GenericSpecification;
 import rami.generic.repositories.specs.SpecificationBuilder;
 import rami.generic.services.DummyService;
 import rami.generic.services.PersonService;
-import rami.generic.services.genericSegregation.auxiliar.RelationConfig;
+import rami.generic.services.genericSegregation.utils.RelationConfig;
 
 import java.util.List;
 
@@ -69,6 +69,13 @@ public class DummyServiceImpl implements DummyService {
     }
     //#endregion
 
+
+    @Override
+    public DummyModel create(DummyDtoPost dtoPost) {
+        return DummyService.super.createWithRelations(dtoPost,
+                new RelationConfig<>("person", personService, dtoPost.getPersonId())
+        );
+    }
 
     @Override
     public DummyModel create(DummyDtoPost dtoPost) {

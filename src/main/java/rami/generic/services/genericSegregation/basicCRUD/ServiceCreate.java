@@ -2,7 +2,7 @@ package rami.generic.services.genericSegregation.basicCRUD;
 
 import org.modelmapper.ModelMapper;
 import rami.generic.repositories.GenericRepository;
-import rami.generic.services.genericSegregation.auxiliar.RelationConfig;
+import rami.generic.services.genericSegregation.utils.RelationConfig;
 
 import java.lang.reflect.Field;
 
@@ -34,7 +34,7 @@ public interface ServiceCreate<E, I, M, DTOPOST> {
                 // Configurar la relación
                 relation.configure(entityToSave);
             } catch (Exception e) {
-                throw new RuntimeException("Error al configurar la relación: " + relation.getFieldName(), e);
+                throw new RuntimeException("Error on relation: " + relation.getFieldName(), e);
             }
         }
 
