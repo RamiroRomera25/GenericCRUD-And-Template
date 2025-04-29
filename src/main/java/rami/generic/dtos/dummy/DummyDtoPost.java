@@ -7,4 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DummyDtoPost {
     private String dummy;
+
+    private Long personId;
 }

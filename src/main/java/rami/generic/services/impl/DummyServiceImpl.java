@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import rami.generic.dtos.dummy.DummyDtoFilter;
+import rami.generic.dtos.dummy.DummyDtoPost;
 import rami.generic.entities.DummyEntity;
 import rami.generic.models.DummyModel;
 import rami.generic.repositories.DummyRepository;
@@ -15,6 +16,8 @@ import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.specs.GenericSpecification;
 import rami.generic.repositories.specs.SpecificationBuilder;
 import rami.generic.services.DummyService;
+import rami.generic.services.PersonService;
+import rami.generic.services.genericSegregation.utils.RelationConfig;
 
 import java.util.List;
 
@@ -28,6 +31,9 @@ public class DummyServiceImpl implements DummyService {
 
     @Autowired
     private DummyRepository dummyRepository;
+
+    @Autowired
+    private PersonService personService;
 
     @Autowired
     private GenericSpecification<DummyEntity> dummySpecification;
@@ -62,6 +68,13 @@ public class DummyServiceImpl implements DummyService {
         return specificationBuilder;
     }
     //#endregion
+
+    @Override
+    public DummyModel create(DummyDtoPost dtoPost) {
+        return DummyService.super.createWithRelations(dtoPost,
+                new RelationConfig<>("person", personService, dtoPost.getPersonId())
+        );
+    }
 
     @Override
     public List<DummyModel> dummyLike(DummyDtoFilter filter) {
