@@ -78,13 +78,6 @@ public class DummyServiceImpl implements DummyService {
     }
 
     @Override
-    public DummyModel create(DummyDtoPost dtoPost) {
-        return DummyService.super.createWithRelations(dtoPost,
-                new RelationConfig<>("person", personService, dtoPost.getPersonId())
-        );
-    }
-
-    @Override
     public List<DummyModel> dummyLike(DummyDtoFilter filter) {
         List<DummyEntity> entityList = getRepository().findAll(specificationBuilder
                                                     .withDynamicFilterLike(this.getFilterMap(filter))
